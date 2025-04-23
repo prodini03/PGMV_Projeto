@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b8214d336701d4aad566abaeed559b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalForce: 8
-  turnRate: 50
-  speed: 100
+  verticalForce: 10
+  turnRate: 1000
+  speed: 1000
 --- !u!54 &44343437
 Rigidbody:
   m_ObjectHideFlags: 0
