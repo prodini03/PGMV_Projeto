@@ -1,0 +1,50 @@
+<Armario n="6" m="6" x ="7" y="4" z="8" r="45">
+	<Coluna>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="G"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="P"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="G"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="P"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="P"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="G"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+		<Modulo tipo="C"/>
+	</Coluna>
+</Armario>
