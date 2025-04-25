@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class RobotController : MonoBehaviour
 {
-
     public float speed = 1000f;
     public float verticalForce = 10f;
 
@@ -14,17 +13,31 @@ public class RobotController : MonoBehaviour
     private Rigidbody rb;
 
     private float horizontalCameraMove;
+    private float verticalCameraMove;
+
+    private Transform headTransform;
+    private Quaternion initialHeadLocalRotation;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        headTransform = transform.Find("Head");
+
+        if (headTransform != null)
+        {
+            initialHeadLocalRotation = headTransform.localRotation;
+        }
+        else
+        {
+            Debug.LogWarning("Head not found! Make sure it’s named 'Head' or tagged as 'Head'.");
+        }
     }
 
     void FixedUpdate()
     {
-
         float moveForward = Input.GetAxis("Vertical");
         float moveRight = Input.GetAxis("Horizontal");
         Vector3 moveDirection = (transform.forward * moveForward + transform.right * moveRight).normalized;
@@ -46,10 +59,15 @@ public class RobotController : MonoBehaviour
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         horizontalCameraMove += mouseX;
+        verticalCameraMove -= mouseY;
+        verticalCameraMove = Mathf.Clamp(verticalCameraMove, -30f, 30f);
 
         transform.rotation = Quaternion.Euler(0f, horizontalCameraMove, 0f);
 
+        headTransform.localRotation = initialHeadLocalRotation * Quaternion.Euler(0f, verticalCameraMove, 0f);
+        
     }
 }

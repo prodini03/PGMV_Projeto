@@ -19,7 +19,7 @@ public class RobotSound : MonoBehaviour
         hoverPlayer.clip = hoverLoop;
         hoverPlayer.loop = true;
         hoverPlayer.playOnAwake = true;
-        hoverPlayer.volume = 0.1f; // Adjust volume if needed
+        hoverPlayer.volume = 0.1f; 
         hoverPlayer.Play();
     }
 
