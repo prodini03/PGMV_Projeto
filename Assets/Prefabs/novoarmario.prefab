@@ -85,13 +85,13 @@ PrefabInstance:
       addedObject: {fileID: 4934607649629821055}
     - targetCorrespondingSourceObject: {fileID: 6317231364455570217, guid: 18458a25eaac9534ba1686bd70c7ea61, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3899333944429818900}
+      addedObject: {fileID: 5279452465096707249}
     - targetCorrespondingSourceObject: {fileID: -9085916238618120715, guid: 18458a25eaac9534ba1686bd70c7ea61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2308147438676733677}
     - targetCorrespondingSourceObject: {fileID: -9085916238618120715, guid: 18458a25eaac9534ba1686bd70c7ea61, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5706547693839822078}
+      addedObject: {fileID: 399980312969393916}
   m_SourcePrefab: {fileID: 100100000, guid: 18458a25eaac9534ba1686bd70c7ea61, type: 3}
 --- !u!1 &4202839570371645181 stripped
 GameObject:
@@ -119,7 +119,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5706547693839822078
+--- !u!114 &399980312969393916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +128,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4202839570371645181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e306a01020c77e143aeba6170b078e2f, type: 3}
+  m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionKey: 113
   distanciaMaxima: 10
   anguloVisao: 180
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
+  abrirSom: {fileID: 8300000, guid: 5cacdfda54ff8be47beaf481c753eb58, type: 3}
+  fecharSom: {fileID: 8300000, guid: 5cacdfda54ff8be47beaf481c753eb58, type: 3}
 --- !u!1 &7786859507284916257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6317231364455570217, guid: 18458a25eaac9534ba1686bd70c7ea61, type: 3}
@@ -159,7 +164,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3899333944429818900
+--- !u!114 &5279452465096707249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,8 +173,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7786859507284916257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c54234478533d41b8519a513f7f451, type: 3}
+  m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionKey: 101
   distanciaMaxima: 10
   anguloVisao: 180
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
+  abrirSom: {fileID: 8300000, guid: 5cacdfda54ff8be47beaf481c753eb58, type: 3}
+  fecharSom: {fileID: 8300000, guid: 5cacdfda54ff8be47beaf481c753eb58, type: 3}

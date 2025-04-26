@@ -32,7 +32,7 @@ public class ArmarioGen : MonoBehaviour
 
         if (n % 2 != 0) 
         { 
-            throw new System.Exception("O armário não pode ter um número ímpar em n");
+            throw new System.Exception("O armï¿½rio nï¿½o pode ter um nï¿½mero ï¿½mpar em n");
         }
 
         float moduloLargura = 2.0f;  
@@ -55,7 +55,7 @@ public class ArmarioGen : MonoBehaviour
 
         XmlNodeList linhas = armarioNode.SelectNodes("Coluna");
 
-        if(linhas.Count != n) throw new System.Exception("Erro ao criar ficheiro xml, número de colunas diferente de n");
+        if(linhas.Count != n) throw new System.Exception("Erro ao criar ficheiro xml, nï¿½mero de colunas diferente de n");
 
         for (int i = 0; i < n; i++)
         {
@@ -65,7 +65,7 @@ public class ArmarioGen : MonoBehaviour
                 XmlNode moduloNode = linhaNode.SelectNodes("Modulo")[j];
                 int moduloCount = linhaNode.SelectNodes("Modulo").Count;
 
-                if (moduloCount != m) throw new System.Exception("Erro ao criar ficheiro xml, número de linhas diferente de m");
+                if (moduloCount != m) throw new System.Exception("Erro ao criar ficheiro xml, nï¿½mero de linhas diferente de m");
 
                 string tipo = moduloNode.Attributes["tipo"].Value;
                 GameObject moduloPrefab = tipo switch
@@ -83,7 +83,6 @@ public class ArmarioGen : MonoBehaviour
                 if (tipo == "G")
                 {
                     GameObject modulo = Instantiate(moduloPrefab);
-                    modulo.transform.localRotation = Quaternion.AngleAxis(-90, new Vector3(0, 1, 0));
                     modulo.name = "Modulo_" + j + "_" + i;
                     modulo.transform.parent = armario.transform;
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
@@ -96,6 +95,7 @@ public class ArmarioGen : MonoBehaviour
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
 
                 }
+                
 
             }
         }

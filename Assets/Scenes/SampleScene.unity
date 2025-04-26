@@ -282,9 +282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armarioPrefab: {fileID: 3997581090193579609, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
-  gavetaPrefab: {fileID: 919132149155446097, guid: 6f5e2073d1c5e5341827c8102d71ec2f, type: 3}
+  gavetaPrefab: {fileID: 4644201264379411032, guid: 3a485fef69e773544926da7e58aac999, type: 3}
   prateleiraPrefab: {fileID: 919132149155446097, guid: 104d9cfd0f410e34e9ca682094a29f86, type: 3}
-  cubiculoPrefab: {fileID: 919132149155446097, guid: a26bb15a7859e3446913922178859311, type: 3}
+  cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
 --- !u!4 &523711342
 Transform:
   m_ObjectHideFlags: 0
