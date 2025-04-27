@@ -37,7 +37,6 @@ public class DoorInteraction : MonoBehaviour
 
         if (audioSource == null)
         {
-            // Optional: auto-add one if not present
             audioSource = gameObject.AddComponent<AudioSource>();
         }
     }

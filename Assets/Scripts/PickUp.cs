@@ -37,13 +37,13 @@ public class ArmPickup : MonoBehaviour
         }
     }
 
-void PickUp(GameObject obj)
-{
-    heldObject = obj;
-    heldObject.transform.SetParent(transform);
-    heldObject.transform.localPosition = new Vector3(0f, 0f, 0f);
-    heldObject.GetComponent<Rigidbody>().isKinematic = true;
-}
+    void PickUp(GameObject obj)
+    {
+        heldObject = obj;
+        heldObject.transform.SetParent(transform);
+        heldObject.transform.localPosition = new Vector3(0.7f, -0.44f, 0f);
+        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
 
 
     void Drop()

@@ -32,7 +32,7 @@ public class ArmarioGen : MonoBehaviour
 
         if (n % 2 != 0) 
         { 
-            throw new System.Exception("O arm�rio n�o pode ter um n�mero �mpar em n");
+            throw new System.Exception("O armário não pode ter um n�mero ímpar em n");
         }
 
         float moduloLargura = 2.0f;  
