@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RobotController : MonoBehaviour
 {
-    public float speed = 1000f;
+    public float speed = 2500f;
     public float verticalForce = 10f;
 
-    public float hoverForce = 5f;
+    public float hoverForce = 30f;
     public float hoverFrequency = 2f;
 
     public float mouseSensitivity = 2f;

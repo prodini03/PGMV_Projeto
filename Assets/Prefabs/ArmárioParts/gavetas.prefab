@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKey: 103
-  distanciaMaxima: 3
+  distanciaMaxima: 20
   anguloVisao: 45
   abrirTrigger: Abrir
   fecharTrigger: Fechar
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0.7263384, y: 1.3240403, z: -0.28482774}
-  m_LocalScale: {x: 2.0002525, y: 2.0002525, z: 2.0002525}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8197291654550152338}
@@ -220,7 +220,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4644201264379411032}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1e+9
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKey: 103
-  distanciaMaxima: 3
+  distanciaMaxima: 10
   anguloVisao: 45
   abrirTrigger: Abrir
   fecharTrigger: Fechar

@@ -55,7 +55,7 @@ public class ArmarioGen : MonoBehaviour
 
         XmlNodeList linhas = armarioNode.SelectNodes("Coluna");
 
-        if(linhas.Count != n) throw new System.Exception("Erro ao criar ficheiro xml, n�mero de colunas diferente de n");
+        if(linhas.Count != n) throw new System.Exception("Erro ao criar ficheiro xml, número de colunas diferente de n");
 
         for (int i = 0; i < n; i++)
         {
@@ -65,7 +65,7 @@ public class ArmarioGen : MonoBehaviour
                 XmlNode moduloNode = linhaNode.SelectNodes("Modulo")[j];
                 int moduloCount = linhaNode.SelectNodes("Modulo").Count;
 
-                if (moduloCount != m) throw new System.Exception("Erro ao criar ficheiro xml, n�mero de linhas diferente de m");
+                if (moduloCount != m) throw new System.Exception("Erro ao criar ficheiro xml, número de linhas diferente de m");
 
                 string tipo = moduloNode.Attributes["tipo"].Value;
                 GameObject moduloPrefab = tipo switch

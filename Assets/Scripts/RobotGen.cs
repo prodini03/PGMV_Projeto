@@ -14,7 +14,7 @@ public class RobotGen : MonoBehaviour
         // Head
         GameObject head = Instantiate(headPrefab, transform);
         head.name = "Head";
-        head.transform.localPosition = new Vector3(0, 1.7f, 0);
+        head.transform.localPosition = new Vector3(0, 6.3f, 0);
 
         // Body
         GameObject body = Instantiate(bodyPrefab, transform);
@@ -40,18 +40,27 @@ public class RobotGen : MonoBehaviour
 
         leftShoulder = leftShoulderInstance.transform;
 
+        leftArm.transform.localPosition = new Vector3(-2.5f, 2.85f, 0);
+
 
 
         // Right Arm
         GameObject rightArm = new GameObject("RightArm");
+        GameObject rightShoulder = Instantiate(jointPrefab, rightArm.transform);
+        GameObject rightElbow = Instantiate(jointPrefab, rightArm.transform);
+
+        rightElbow.transform.parent = rightShoulder.transform;
+        rightShoulder.transform.parent = rightElbow.transform;
         rightArm.transform.parent = transform;
 
-        GameObject rightShoulder = Instantiate(jointPrefab, rightArm.transform);
+        rightElbow.name = "RightElbow";
+        rightElbow.transform.localPosition = new Vector3(0f, -0.44f, 0);
+
         rightShoulder.name = "RightShoulder";
         rightShoulder.transform.localPosition = new Vector3(0.62f, 1f, 0);
 
-        GameObject rightElbow = Instantiate(jointPrefab, rightArm.transform);
-        rightElbow.name = "RightElbow";
-        rightElbow.transform.localPosition = new Vector3(0.62f, 0.56f, 0);
+        rightArm.transform.localPosition = new Vector3(2.5f, 2.85f, 0);
+
+        
     }
 }
