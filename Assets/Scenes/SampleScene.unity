@@ -484,6 +484,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.164
       objectReference: {fileID: 0}
+    - target: {fileID: 867314882427223585, guid: 8465ace18df764d49a2a7421f18a0864, type: 3}
+      propertyPath: m_Text
+      value: '
+
+
+        Days since Last
+
+        Accident
+
+        0'
+      objectReference: {fileID: 0}
     - target: {fileID: 867314882432960775, guid: 8465ace18df764d49a2a7421f18a0864, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8055031
