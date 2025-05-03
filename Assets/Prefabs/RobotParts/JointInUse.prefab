@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8477310138625851484}
   m_Layer: 0
   m_Name: PickUpZone
-  m_TagString: Untagged
+  m_TagString: Braco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22386333, y: 0.3873372, z: 0.2010169}
-  m_Center: {x: 0.0109856585, y: -0.18648195, z: -0.0027024746}
+  m_Size: {x: 0.22386333, y: 0.43691045, z: 0.2010169}
+  m_Center: {x: 0.0109856585, y: -0.21126857, z: -0.0027024746}
 --- !u!114 &8477310138625851484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5571,7 +5571,7 @@ GameObject:
   - component: {fileID: 4661979319394992326}
   m_Layer: 0
   m_Name: JointInUse
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

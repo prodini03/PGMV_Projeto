@@ -293,6 +293,8 @@ GameObject:
   - component: {fileID: 3606358332945853381}
   - component: {fileID: 5314014726528470068}
   - component: {fileID: 233974487744634998}
+  - component: {fileID: 4641968226275013957}
+  - component: {fileID: 1540659953622792689}
   m_Layer: 0
   m_Name: PivotTopDir
   m_TagString: Untagged
@@ -344,7 +346,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2621448985755532570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
@@ -356,6 +358,45 @@ MonoBehaviour:
   fecharTrigger: Fechar
   abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
   fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+--- !u!65 &4641968226275013957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621448985755532570}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6291406, y: 1.2688215, z: 1.351399}
+  m_Center: {x: 0, y: -0.12549531, z: -0.8857262}
+--- !u!114 &1540659953622792689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621448985755532570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78596da5a96d18244897fbb627951d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 5314014726528470068}
+  abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
+  fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+  interactionKey: 120
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
 --- !u!1 &2830720709800424957
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +657,8 @@ GameObject:
   - component: {fileID: 1323986250938554475}
   - component: {fileID: 696844932915968962}
   - component: {fileID: 7063990779677568087}
+  - component: {fileID: 4873634930667004721}
+  - component: {fileID: 4664356519575107887}
   m_Layer: 0
   m_Name: PivotBotEsq
   m_TagString: Untagged
@@ -667,7 +710,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848825145914281725}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
@@ -679,6 +722,45 @@ MonoBehaviour:
   fecharTrigger: Fechar
   abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
   fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+--- !u!65 &4873634930667004721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848825145914281725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.97217417, z: 1.2389274}
+  m_Center: {x: 0, y: 0.5780114, z: -0.79494166}
+--- !u!114 &4664356519575107887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848825145914281725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78596da5a96d18244897fbb627951d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 696844932915968962}
+  abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
+  fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+  interactionKey: 120
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
 --- !u!1 &5098472538584162541
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +856,8 @@ GameObject:
   - component: {fileID: 2877469240506219642}
   - component: {fileID: 9112572324966191561}
   - component: {fileID: 2413606420073551439}
+  - component: {fileID: 7621908168170812111}
+  - component: {fileID: 3201070575541574526}
   m_Layer: 0
   m_Name: PivotTopEsq
   m_TagString: Untagged
@@ -825,7 +909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7726187443984941616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
@@ -837,6 +921,45 @@ MonoBehaviour:
   fecharTrigger: Fechar
   abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
   fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+--- !u!65 &7621908168170812111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726187443984941616}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6291406, y: 1.1523666, z: 1.3118773}
+  m_Center: {x: -0.18542969, y: -0.14951849, z: -0.9020715}
+--- !u!114 &3201070575541574526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726187443984941616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78596da5a96d18244897fbb627951d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 9112572324966191561}
+  abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
+  fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+  interactionKey: 120
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
 --- !u!1 &7966145629055811636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1139,8 @@ GameObject:
   - component: {fileID: 6537727364506660881}
   - component: {fileID: 429902893733059989}
   - component: {fileID: 7904788983703662679}
+  - component: {fileID: 1478852963139912500}
+  - component: {fileID: 7497076709132127387}
   m_Layer: 0
   m_Name: PivotBotDir
   m_TagString: Untagged
@@ -1067,7 +1192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9102391734777944346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc27c53caa1c464dba01a0392673865, type: 3}
   m_Name: 
@@ -1079,3 +1204,42 @@ MonoBehaviour:
   fecharTrigger: Fechar
   abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
   fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+--- !u!65 &1478852963139912500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102391734777944346}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.073806, z: 1.2511196}
+  m_Center: {x: 0, y: 0.7490549, z: -0.9540987}
+--- !u!114 &7497076709132127387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102391734777944346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78596da5a96d18244897fbb627951d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 429902893733059989}
+  abrirSom: {fileID: 8300000, guid: 00a16fb428a86c54a86f49dcff5bebe2, type: 3}
+  fecharSom: {fileID: 8300000, guid: a2a3cf59f77631c46b73a844d2cf21c6, type: 3}
+  interactionKey: 120
+  abrirTrigger: Abrir
+  fecharTrigger: Fechar
