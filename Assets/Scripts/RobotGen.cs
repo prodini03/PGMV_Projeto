@@ -14,12 +14,12 @@ public class RobotGen : MonoBehaviour
         // Head
         GameObject head = Instantiate(headPrefab, transform);
         head.name = "Head";
-        head.transform.localPosition = new Vector3(0, 6.3f, 0);
+        head.transform.localPosition = new Vector3(0, 4.725f, 0);
 
         // Body
         GameObject body = Instantiate(bodyPrefab, transform);
         body.name = "Body";
-        body.transform.localPosition = new Vector3(0, 0.5f, 0);
+        body.transform.localPosition = new Vector3(0, 0.375f, 0);
 
         // Left Arm
         GameObject leftArm = new GameObject("LeftArm");
@@ -31,16 +31,16 @@ public class RobotGen : MonoBehaviour
         leftArm.transform.parent = transform;
 
         leftElbowInstance.name = "LeftElbow";
-        leftElbowInstance.transform.localPosition = new Vector3(0f, -0.44f, 0);
+        leftElbowInstance.transform.localPosition = new Vector3(0f, -0.33f, 0);
 
         leftElbow = leftElbowInstance.transform;
 
         leftShoulderInstance.name = "LeftShoulder";
-        leftShoulderInstance.transform.localPosition = new Vector3(-0.62f, 1f, 0);
+        leftShoulderInstance.transform.localPosition = new Vector3(-0.33f, 0.75f, 0);
 
         leftShoulder = leftShoulderInstance.transform;
 
-        leftArm.transform.localPosition = new Vector3(-2.5f, 2.85f, 0);
+        leftArm.transform.localPosition = new Vector3(-1.875f, 2.1375f, 0);
 
 
 
@@ -54,12 +54,12 @@ public class RobotGen : MonoBehaviour
         rightArm.transform.parent = transform;
 
         rightElbow.name = "RightElbow";
-        rightElbow.transform.localPosition = new Vector3(0f, -0.44f, 0);
+        rightElbow.transform.localPosition = new Vector3(0f, -0.33f, 0);
 
         rightShoulder.name = "RightShoulder";
-        rightShoulder.transform.localPosition = new Vector3(0.62f, 1f, 0);
+        rightShoulder.transform.localPosition = new Vector3(0.33f, 0.75f, 0);
 
-        rightArm.transform.localPosition = new Vector3(2.5f, 2.85f, 0);
+        rightArm.transform.localPosition = new Vector3(1.875f, 2.1375f, 0);
 
         
     }
