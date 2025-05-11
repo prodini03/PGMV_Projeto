@@ -4,7 +4,7 @@ public class ScreenSaver : MonoBehaviour
 {
     public Texture[] images;
     public float interval = 5f;
-    public int screenMaterialIndex = 2; // Substituir pelo índice certo
+    public int screenMaterialIndex = 2; 
 
     private Renderer rend;
     private int currentIndex = 0;
@@ -17,7 +17,6 @@ public class ScreenSaver : MonoBehaviour
 
         if (rend != null && images.Length > 0 && screenMaterialIndex < rend.materials.Length)
         {
-            // Fazemos uma cópia do material do ecrã para não afetar outros objetos que usem o mesmo
             Material[] mats = rend.materials;
             screenMaterialInstance = new Material(mats[screenMaterialIndex]);
             mats[screenMaterialIndex] = screenMaterialInstance;

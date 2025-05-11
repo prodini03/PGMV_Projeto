@@ -31,7 +31,7 @@ public class RobotGen : MonoBehaviour
         leftArm.transform.parent = transform;
 
         leftElbowInstance.name = "LeftElbow";
-        leftElbowInstance.transform.localPosition = new Vector3(0f, -0.33f, 0);
+        leftElbowInstance.transform.localPosition = new Vector3(0f, -0.44f, 0);
 
         leftElbow = leftElbowInstance.transform;
 
@@ -54,7 +54,7 @@ public class RobotGen : MonoBehaviour
         rightArm.transform.parent = transform;
 
         rightElbow.name = "RightElbow";
-        rightElbow.transform.localPosition = new Vector3(0f, -0.33f, 0);
+        rightElbow.transform.localPosition = new Vector3(0f, -0.44f, 0);
 
         rightShoulder.name = "RightShoulder";
         rightShoulder.transform.localPosition = new Vector3(0.33f, 0.75f, 0);
