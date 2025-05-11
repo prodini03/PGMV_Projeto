@@ -1791,6 +1791,7 @@ MonoBehaviour:
   gavetaPrefab: {fileID: 4644201264379411032, guid: 3a485fef69e773544926da7e58aac999, type: 3}
   prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
   cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
+  fileName: Armario.xml
 --- !u!4 &523711342
 Transform:
   m_ObjectHideFlags: 0
@@ -2124,6 +2125,55 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6416302070336371891, guid: 6f2191a3160a17448ba077693fe84f7a, type: 3}
+--- !u!1 &837165928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837165930}
+  - component: {fileID: 837165929}
+  m_Layer: 0
+  m_Name: Armario2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837165929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837165928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7ef036457550b4f99ddc033f4c84f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armarioPrefab: {fileID: 3997581090193579609, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+  gavetaPrefab: {fileID: 4644201264379411032, guid: 3a485fef69e773544926da7e58aac999, type: 3}
+  prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
+  cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
+  fileName: Armario2.xml
+--- !u!4 &837165930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837165928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &873612505
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2700,3 +2750,4 @@ SceneRoots:
   - {fileID: 198106375}
   - {fileID: 344916996}
   - {fileID: 94360039}
+  - {fileID: 837165930}

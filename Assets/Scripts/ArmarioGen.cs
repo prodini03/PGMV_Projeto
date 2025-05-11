@@ -6,19 +6,20 @@ using UnityEngine;
 
 public class ArmarioGen : MonoBehaviour
 {
-[SerializeField] GameObject armarioPrefab;
-[SerializeField] GameObject gavetaPrefab;
-[SerializeField] GameObject prateleiraPrefab;
-[SerializeField] GameObject cubiculoPrefab;
+    [SerializeField] GameObject armarioPrefab;
+    [SerializeField] GameObject gavetaPrefab;
+    [SerializeField] GameObject prateleiraPrefab;
+    [SerializeField] GameObject cubiculoPrefab;
+    [SerializeField] string fileName;
     
     void Start()
     {
-        GerarArmario("Assets/Scripts/Armario.xml");
+        GerarArmario("Assets/Scripts/" + fileName);
     }
 
     void GerarArmario(string path)
     {
-
+        if (fileName == "Armario2") print("AQUIIIIIII");
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(path);
 
@@ -32,7 +33,7 @@ public class ArmarioGen : MonoBehaviour
 
         if (n % 2 != 0) 
         { 
-            throw new System.Exception("O armário não pode ter um n�mero ímpar em n");
+            throw new System.Exception("O armário não pode ter um número ímpar em n");
         }
 
         float moduloLargura = 2.0f;  

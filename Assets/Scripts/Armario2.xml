@@ -1,0 +1,12 @@
+<Armario n="2" m="3" x ="-2" y="8" z="138" r="190">
+	<Coluna>
+		<Modulo tipo="P"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C"/>
+		<Modulo tipo="C"/>
+		<Modulo tipo="C"/>
+	</Coluna>
+</Armario>
