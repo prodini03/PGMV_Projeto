@@ -41,9 +41,13 @@ public class ArmPickup : MonoBehaviour
     {
         heldObject = obj;
         heldObject.transform.SetParent(transform, true);
-        heldObject.transform.localPosition = new Vector3(0.4f, -0.44f, 0f);
+        heldObject.transform.localScale = new Vector3(2.33f, 1.33f, 1.33f);
+        heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
+        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
+        heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.1f);
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
-        }
+        heldObject.GetComponent<Collider>().enabled = false;
+    }
 
 
     void Drop()
@@ -51,7 +55,10 @@ public class ArmPickup : MonoBehaviour
         heldObject.transform.SetParent(null);
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.AddForce(transform.forward * 2f, ForceMode.Impulse);
+        rb.GetComponent<Collider>().enabled = true;
+        rb.AddForce(transform.forward * 0.01f, ForceMode.Impulse);
+        rb.transform.localScale = new Vector3(5,5,5);
+        rb.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
         heldObject = null;
     }
 }
