@@ -21,6 +21,7 @@ public class RobotController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -65,7 +66,8 @@ public class RobotController : MonoBehaviour
         verticalCameraMove -= mouseY;
         verticalCameraMove = Mathf.Clamp(verticalCameraMove, -30f, 30f);
 
-        transform.rotation = Quaternion.Euler(0f, horizontalCameraMove, 0f);
+        Quaternion targetRotation = Quaternion.Euler(0f, horizontalCameraMove, 0f);
+        rb.MoveRotation(targetRotation);
 
         headTransform.localRotation = initialHeadLocalRotation * Quaternion.Euler(0f, verticalCameraMove, 0f);
         

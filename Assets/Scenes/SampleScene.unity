@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1795,8 +1795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7ef036457550b4f99ddc033f4c84f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armarioPrefab: {fileID: 3997581090193579609, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
-  gavetaPrefab: {fileID: 4644201264379411032, guid: 3a485fef69e773544926da7e58aac999, type: 3}
+  armarioPrefab: {fileID: 4224550485608749238, guid: c17c5113c228cab47b67be62f8ffd8e9, type: 3}
+  gavetaPrefab: {fileID: 2140490353766871027, guid: e02e648db3e4fe444a684bb6cea6680d, type: 3}
   prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
   cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
   fileName: Armario.xml
@@ -1983,8 +1983,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.37538996, y: 0.29464796, z: 0.36637115}
-  m_Center: {x: -0.0037208647, y: 0.12931158, z: 0.0014801025}
+  m_Size: {x: 0.2559088, y: 0.24079628, z: 0.2599701}
+  m_Center: {x: -0.00021810531, y: 0.11985435, z: 0.0053359987}
 --- !u!54 &633858209
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2028,7 +2028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -2162,7 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7ef036457550b4f99ddc033f4c84f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armarioPrefab: {fileID: 3997581090193579609, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+  armarioPrefab: {fileID: 4224550485608749238, guid: c17c5113c228cab47b67be62f8ffd8e9, type: 3}
   gavetaPrefab: {fileID: 4644201264379411032, guid: 3a485fef69e773544926da7e58aac999, type: 3}
   prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
   cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
