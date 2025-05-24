@@ -21,7 +21,6 @@ public class DoorTriggerInteraction : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
-        Debug.Log("start");
     }
 
     void Update()
@@ -29,7 +28,6 @@ public class DoorTriggerInteraction : MonoBehaviour
         
         if (playerInZone && Input.GetKeyDown(interactionKey))
         {
-            Debug.Log("Em zona de abrir porta");
             if (!isOpen)
             {
                 doorAnimator.SetTrigger(abrirTrigger);
@@ -49,7 +47,6 @@ public class DoorTriggerInteraction : MonoBehaviour
     {
         if (other.CompareTag("Braco"))
         {
-            Debug.Log("Player entered trigger");
             playerInZone = true;
         }
     }
