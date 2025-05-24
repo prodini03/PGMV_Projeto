@@ -2291,6 +2291,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1590805420948565800, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.12003342
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590805420948565800, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Center.x
+      value: -0.80559224
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590805420948565800, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Center.y
+      value: 0.015487542
+      objectReference: {fileID: 0}
     - target: {fileID: 3997581090193579609, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
       propertyPath: m_Name
       value: novoarmario1 Variant
@@ -2334,6 +2346,22 @@ PrefabInstance:
     - target: {fileID: 4337408989546333411, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913958260579869182, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904756564388150597, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2568792
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904756564388150597, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Center.x
+      value: -0.75615966
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904756564388150597, guid: d760037325a38db4199a4ac1eada82ec, type: 3}
+      propertyPath: m_Center.y
+      value: 0.015487542
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 399980312969393916, guid: d760037325a38db4199a4ac1eada82ec, type: 3}

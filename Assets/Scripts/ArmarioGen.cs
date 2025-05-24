@@ -84,14 +84,16 @@ public class ArmarioGen : MonoBehaviour
                 if (tipo == "G")
                 {
                     GameObject modulo = Instantiate(moduloPrefab);
-                    modulo.name = "Modulo_" + j + "_" + i;
+                    if(i == 0 || i < n/2) modulo.name = "Modulo_L_" + j + "_" + i;
+                    else modulo.name = "Modulo_R_" + j + "_" + i;
                     modulo.transform.parent = armario.transform;
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
                 }
                 else
                 {
                     GameObject modulo = Instantiate(moduloPrefab);
-                    modulo.name = "Modulo_" + j + "_" + i;
+                    if (i == 0 || i < n / 2) modulo.name = "Modulo_L_" + j + "_" + i;
+                    else modulo.name = "Modulo_R_" + j + "_" + i;
                     modulo.transform.parent = armario.transform;
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
 
