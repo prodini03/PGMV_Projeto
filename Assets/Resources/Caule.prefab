@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 808760028322451824}
   - component: {fileID: 4556089167746562843}
   m_Layer: 0
-  m_Name: Stem
+  m_Name: Caule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.14, y: -16.502, z: 214.752}
-  m_LocalScale: {x: 0.015415681, y: 0.111843206, z: 0.015415681}
+  m_LocalScale: {x: 0.06459653, y: 0.46865806, z: 0.06459653}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
