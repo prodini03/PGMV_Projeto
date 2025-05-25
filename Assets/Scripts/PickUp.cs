@@ -43,8 +43,8 @@ public class ArmPickup : MonoBehaviour
         heldObject.transform.SetParent(transform, true);
         heldObject.transform.localScale = new Vector3(2.33f, 1.33f, 1.33f);
         heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
-        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
-        heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.1f);
+        heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
+        heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.07f);
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
         heldObject.GetComponent<Collider>().enabled = false;
     }
