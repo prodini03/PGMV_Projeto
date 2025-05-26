@@ -19,17 +19,16 @@ public class ArmarioGen : MonoBehaviour
 
     void GerarArmario(string path)
     {
-        if (fileName == "Armario2") print("AQUIIIIIII");
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(path);
 
         XmlNode armarioNode = xmlDoc.SelectSingleNode("/Armario");
         int n = int.Parse(armarioNode.Attributes["n"].Value);
         int m = int.Parse(armarioNode.Attributes["m"].Value);
-        int x = int.Parse(armarioNode.Attributes["x"].Value);
-        int y = int.Parse(armarioNode.Attributes["y"].Value);
-        int z = int.Parse(armarioNode.Attributes["z"].Value);
-        int r = int.Parse(armarioNode.Attributes["r"].Value);
+        float x = float.Parse(armarioNode.Attributes["x"].Value);
+        float y = float.Parse(armarioNode.Attributes["y"].Value);
+        float z = float.Parse(armarioNode.Attributes["z"].Value);
+        float r = float.Parse(armarioNode.Attributes["r"].Value);
 
         if (n % 2 != 0) 
         { 

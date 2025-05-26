@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2294802729981112894}
   - component: {fileID: 3608815349504645477}
   - component: {fileID: 9116909391056164389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 3934735125793200846}
   - component: {fileID: 6447282308436320739}
   - component: {fileID: 5773487694808272159}
-  m_Layer: 0
-  m_Name: InteractionCollider
+  m_Layer: 8
+  m_Name: GavetaInteractionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7720894, y: 1.5296108, z: 1.2015473}
-  m_Center: {x: -0.13817708, y: 0.20567948, z: 0.21517895}
+  m_Size: {x: 1.7720894, y: 1.5296108, z: 1.5030419}
+  m_Center: {x: -0.13817708, y: 0.20567948, z: 0.0644305}
 --- !u!114 &5773487694808272159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,9 +191,9 @@ GameObject:
   - component: {fileID: 4698096838740923084}
   - component: {fileID: 8462083486641589338}
   - component: {fileID: 1075756565934732870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gavetas 1
-  m_TagString: Untagged
+  m_TagString: Compartimento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 6175489443245778029}
   - component: {fileID: 7180195122218169264}
   - component: {fileID: 1568090716430831979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,8 +410,8 @@ GameObject:
   - component: {fileID: 6259743726365611328}
   - component: {fileID: 3294466912747105128}
   - component: {fileID: 7277501339406156707}
-  m_Layer: 0
-  m_Name: InteractionCollider
+  m_Layer: 8
+  m_Name: GavetaInteractionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,8 +451,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7720894, y: 1.5274082, z: 1.2015475}
-  m_Center: {x: -0.13817708, y: 0.20678073, z: 0.21517895}
+  m_Size: {x: 1.7720894, y: 1.5274082, z: 1.5515859}
+  m_Center: {x: -0.13817708, y: 0.20678073, z: 0.3270126}
 --- !u!114 &7277501339406156707
 MonoBehaviour:
   m_ObjectHideFlags: 0

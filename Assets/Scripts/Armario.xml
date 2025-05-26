@@ -1,4 +1,4 @@
-<Armario n="4" m="3" x ="21" y="8" z="153" r="-45">
+<Armario n="4" m="3" x ="21,27" y="8" z="153,32" r="-45">
 	<Coluna>
 		<Modulo tipo="P"/>
 		<Modulo tipo="G"/>
