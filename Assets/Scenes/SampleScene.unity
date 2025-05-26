@@ -403,6 +403,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2596920409223718522, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596920409223718522, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596920409223718522, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3388642246678455946, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
