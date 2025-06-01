@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3388642246678455946, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.4
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 3388642246678455946, guid: 304de52990f3d6b439e0f675a92cdae8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armarioPrefab: {fileID: 4224550485608749238, guid: c17c5113c228cab47b67be62f8ffd8e9, type: 3}
   gavetaPrefab: {fileID: 2140490353766871027, guid: e02e648db3e4fe444a684bb6cea6680d, type: 3}
-  prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
+  prateleiraPrefab: {fileID: 5570879207132197443, guid: d9f26191b02217c4491fdeb7f08f4a64, type: 3}
   cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
   fileName: Armario.xml
 --- !u!4 &523711342
@@ -2241,7 +2241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armarioPrefab: {fileID: 4224550485608749238, guid: c17c5113c228cab47b67be62f8ffd8e9, type: 3}
   gavetaPrefab: {fileID: 2140490353766871027, guid: e02e648db3e4fe444a684bb6cea6680d, type: 3}
-  prateleiraPrefab: {fileID: 603809747338301136, guid: 8906c962295bf564c9c56838f1f59d6d, type: 3}
+  prateleiraPrefab: {fileID: 5570879207132197443, guid: d9f26191b02217c4491fdeb7f08f4a64, type: 3}
   cubiculoPrefab: {fileID: 457313004869952828, guid: d027361b6a5e7f841a04834de24f1436, type: 3}
   fileName: Armario2.xml
 --- !u!4 &837165930

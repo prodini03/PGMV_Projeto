@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &778377907250525004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6211212019858419264}
+  - component: {fileID: 8225169254958935553}
+  m_Layer: 8
+  m_Name: DoorPlantColliderGavetaTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6211212019858419264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778377907250525004}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6487854631768344360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8225169254958935553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778377907250525004}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8185719, y: 2.223596, z: 1.5935185}
+  m_Center: {x: -0.1277795, y: -0.3198974, z: 0.16084594}
 --- !u!1 &1117154475932391673
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +65,8 @@ GameObject:
   - component: {fileID: 2294802729981112894}
   - component: {fileID: 3608815349504645477}
   - component: {fileID: 9116909391056164389}
+  - component: {fileID: 3448638335038839490}
+  - component: {fileID: 5736209454448494591}
   m_Layer: 8
   m_Name: Cube.003
   m_TagString: Untagged
@@ -33,6 +88,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6259743726365611328}
+  - {fileID: 1184514704098969020}
   m_Father: {fileID: 590685187799170059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2294802729981112894
@@ -107,6 +163,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &3448638335038839490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117154475932391673}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7144326, y: 1.3464048, z: 1.4574589}
+  m_Center: {x: -0.11269294, y: 0.12969601, z: 0.017737124}
+--- !u!114 &5736209454448494591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117154475932391673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e529def81d916a4468dc4da1192cce3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!1 &1942793594969228134
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,8 +249,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7720894, y: 1.5296108, z: 1.5030419}
-  m_Center: {x: -0.13817708, y: 0.20567948, z: 0.0644305}
+  m_Size: {x: 1.7720894, y: 1.5301079, z: 1.5030352}
+  m_Center: {x: -0.13817708, y: 0.20543045, z: 0.06443047}
 --- !u!114 &5773487694808272159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +394,8 @@ GameObject:
   - component: {fileID: 6175489443245778029}
   - component: {fileID: 7180195122218169264}
   - component: {fileID: 1568090716430831979}
+  - component: {fileID: 8721712560797932287}
+  - component: {fileID: 8535861696522594986}
   m_Layer: 8
   m_Name: Cube.002
   m_TagString: Untagged
@@ -325,6 +417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3934735125793200846}
+  - {fileID: 6211212019858419264}
   m_Father: {fileID: 590685187799170059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6175489443245778029
@@ -399,6 +492,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &8721712560797932287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798266888341398068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7036674, y: 1.6856834, z: 1.5631881}
+  m_Center: {x: -0.11616694, y: 0.2990839, z: 0.03094006}
+--- !u!114 &8535861696522594986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798266888341398068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e529def81d916a4468dc4da1192cce3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!1 &4426882479259663440
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,8 +578,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7720894, y: 1.5274082, z: 1.5515859}
-  m_Center: {x: -0.13817708, y: 0.20678073, z: 0.3270126}
+  m_Size: {x: 1.7720894, y: 1.5280981, z: 1.5515859}
+  m_Center: {x: -0.13817708, y: 0.2064358, z: 0.3270126}
 --- !u!114 &7277501339406156707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,3 +598,56 @@ MonoBehaviour:
   interactionKey: 120
   abrirTrigger: Abrir
   fecharTrigger: Fechar
+--- !u!1 &8147231279420419985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184514704098969020}
+  - component: {fileID: 1031676726253077624}
+  m_Layer: 8
+  m_Name: DoorPlantColliderGavetaBot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1184514704098969020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147231279420419985}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000026511065, y: 0, z: 1.8063265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116761006437847661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1031676726253077624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147231279420419985}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8185719, y: 2.223596, z: 1.5935185}
+  m_Center: {x: -0.1277795, y: -0.3198974, z: -1.69}

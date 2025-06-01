@@ -73,6 +73,7 @@ public class DoorTriggerInteraction : MonoBehaviour
                     {
                         if(doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
                         {
+                            markOpen();
                             doorAnimator.SetTrigger(abrirTrigger);
                             if (abrirSom != null) audioSource.PlayOneShot(abrirSom);
                             doorsState.insideDoorsOpen++;
@@ -83,6 +84,7 @@ public class DoorTriggerInteraction : MonoBehaviour
                     {
                         if(doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
                         {
+                            markOpen();
                             doorAnimator.SetTrigger(abrirTrigger);
                             if (abrirSom != null) audioSource.PlayOneShot(abrirSom);
                             doorsState.insideDoorsOpen++;
@@ -117,6 +119,7 @@ public class DoorTriggerInteraction : MonoBehaviour
                 {
                     if (componentName.StartsWith("Modulo_R"))
                     {
+                        markClosed();
                         doorAnimator.SetTrigger(fecharTrigger);
                         if (fecharSom != null) audioSource.PlayOneShot(fecharSom);
                         doorsState.insideDoorsOpen--;
@@ -124,6 +127,7 @@ public class DoorTriggerInteraction : MonoBehaviour
                     }
                     else if(componentName.StartsWith("Modulo_L"))
                     {
+                        markClosed();
                         doorAnimator.SetTrigger(fecharTrigger);
                         if (fecharSom != null) audioSource.PlayOneShot(fecharSom);
                         doorsState.insideDoorsOpen--;
@@ -168,5 +172,57 @@ public class DoorTriggerInteraction : MonoBehaviour
             Debug.LogWarning("No parent named 'Modulo' found.");
         }
         
+    }
+
+    private void markOpen()
+    {
+        GameObject obj = gameObject;
+        print(obj.name);
+        
+        if (obj.transform.parent.name.StartsWith("Cube"))
+        {
+            Transform cube = obj.transform.parent;
+
+            CompartimentoState state = cube.GetComponent<CompartimentoState>();
+            if (state != null)
+            {
+                state.isOpen = true;
+            }
+        }
+        else
+        {
+            Transform cube = obj.transform.GetChild(0);
+            CompartimentoState state = cube.GetComponent<CompartimentoState>();
+            print(cube.name);
+            if (state != null)
+            {
+                state.isOpen = true;
+            }
+        }
+    }
+
+    private void markClosed()
+    {
+        GameObject obj = gameObject;
+        
+        if (obj.transform.parent.name.StartsWith("Cube"))
+        {
+            Transform cube = obj.transform.parent;
+
+            CompartimentoState state = cube.GetComponent<CompartimentoState>();
+            if (state != null)
+            {
+                state.isOpen = false;
+            }
+        }
+        else
+        {
+            Transform cube = obj.transform.GetChild(0);
+            CompartimentoState state = cube.GetComponent<CompartimentoState>();
+            if (state != null)
+            {
+                state.isOpen = false;
+            }
+        }
     }
 }
