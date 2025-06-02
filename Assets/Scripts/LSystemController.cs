@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class LSystemController : MonoBehaviour
 {
-    public enum PlantType { Tree, FloweringBush } // Tipos de planta
-    public PlantType selectedPlant = PlantType.Tree; // Escolher no Inspector
+    public enum PlantType { Bamboo, FloweringBush } // Tipos de planta
+    public PlantType selectedPlant = PlantType.Bamboo; // Escolher no Inspector
 
     public int iterations = 4; // Número de iterações
     public float angle = 25f;
-    public float length = 1f;
+    public float length = 0.3f;
 
     void Start()
     {
@@ -35,16 +35,16 @@ public class LSystemController : MonoBehaviour
         generator.rules = new List<LSystemRule>();
 
         // 3. Define regras diferentes conforme o tipo de planta
-        if (selectedPlant == PlantType.Tree)
+        if (selectedPlant == PlantType.Bamboo) // Mudar para Bamboo
         {
             generator.rules.Add(new LSystemRule
             {
                 predecessor = "F",
-                successors = new List<string> { "F[+F]F[-F]F", "F[+F]F", "F[-F]F" },
-                probabilities = new List<float> { 0.4f, 0.3f, 0.3f }
+                successors = new List<string> { "F", "F[+F\\\\\\L]FL", "//F[////L][-F]", "F[+F[\\\\\\L][L]][-F[//////L][L]]" },
+                probabilities = new List<float> { 0.3f, 0.4f, 0.1f, 0.2f }
             });
         }
-        else if (selectedPlant == PlantType.FloweringBush)
+        else if (selectedPlant == PlantType.FloweringBush)  // Este ficava tipo um arbusto com flores
         {
             generator.rules.Add(new LSystemRule
             {

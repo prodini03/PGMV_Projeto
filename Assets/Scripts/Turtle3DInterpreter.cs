@@ -50,10 +50,18 @@ public class Turtle3DInterpreter : MonoBehaviour
                     turtle.rotation = ti.rotation;
                     break;
                 case 'L':
-                    Instantiate(leafPrefab, turtle.position, turtle.rotation, this.transform);
+                    GameObject leaf = Instantiate(leafPrefab, turtle.position, turtle.rotation, this.transform);
+                    leaf.transform.localScale = new Vector3(length * 125f, length * 255f, length * 125f);
+                    leaf.transform.Translate(Vector3.forward * length / 2.5f, Space.Self);
                     break;
                 case 'X':
                     Instantiate(flowerPrefab, turtle.position, turtle.rotation, this.transform);
+                    break;
+                case '/':
+                    turtle.Rotate(Vector3.up * angle);
+                    break;
+                case '\\':
+                    turtle.Rotate(Vector3.up * -angle); 
                     break;
             }
         }
