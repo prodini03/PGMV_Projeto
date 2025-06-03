@@ -9,6 +9,7 @@ public class Turtle3DInterpreter : MonoBehaviour
 
     public float length = 1f;
     public float angle = 25f;
+    public float branchThickness = 0.1f; // Valor padrão
 
     private Stack<TransformInfo> transformStack;
 
@@ -25,7 +26,7 @@ public class Turtle3DInterpreter : MonoBehaviour
             {
                 case 'F':
                     GameObject branch = Instantiate(branchPrefab, turtle.position, turtle.rotation, this.transform);
-                    branch.transform.localScale = new Vector3(0.1f, length / 2f, 0.1f);
+                    branch.transform.localScale = new Vector3(branchThickness, length / 2f, branchThickness);
                     branch.transform.Translate(Vector3.up * length / 2f);
                     turtle.Translate(Vector3.up * length);
                     break;
@@ -56,10 +57,10 @@ public class Turtle3DInterpreter : MonoBehaviour
                     break;
                 case 'X':
                     GameObject flower = Instantiate(flowerPrefab, turtle.position, turtle.rotation, this.transform);
-                    flower.transform.localEulerAngles = new Vector3(-117.515f, 0.3999939f, -90.315f);
-                    flower.transform.localScale = new Vector3(length * 1f, 1f, 1f);
-                    
-                    
+                    flower.transform.localScale = new Vector3(length * 250f, length * 250f, length * 250f);
+                    flower.transform.Rotate(Vector3.right, -90f, Space.Self);
+                    flower.transform.Translate(Vector3.forward * -0.03f, Space.Self); // Small fixed Z translation
+                    flower.transform.Translate(Vector3.forward * length / 2f, Space.Self);
                     break;
                 case '/':
                     turtle.Rotate(Vector3.up * angle);

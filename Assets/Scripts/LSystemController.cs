@@ -49,7 +49,7 @@ public class LSystemController : MonoBehaviour
             generator.rules.Add(new LSystemRule
             {
                 predecessor = "F",
-                successors = new List<string> { "F[+F[L]]F[-F[X]]", "FFX", "F[-F]F" },
+                successors = new List<string> { "F[+F[L]]F[-F[X]]", "F[+FL]FX", "F[-F]F" },
                 probabilities = new List<float> { 0f, 1f, 0f }
             });
         }
@@ -64,6 +64,10 @@ public class LSystemController : MonoBehaviour
         interpreter.flowerPrefab = Resources.Load<GameObject>("Flor");
         interpreter.angle = angle;
         interpreter.length = length;
+        if (selectedPlant == PlantType.FloweringBush)
+            interpreter.branchThickness = 0.05f; // Mais fino para o arbusto
+        else
+            interpreter.branchThickness = 0.1f;  // Valor normal para outros
 
         // 6. Interpreta a sequência e instancia a planta
         interpreter.Interpret(sequence);
