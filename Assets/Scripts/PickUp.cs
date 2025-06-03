@@ -19,7 +19,7 @@ public class ArmPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (heldObject == null && objectsInReach.Count > 0)
+            if (heldObject == null && objectsInReach.Count > 0 && playerInZone)
             {
                 GameObject target = GetFirstValidObject();
                 if (target != null)
@@ -63,6 +63,8 @@ public class ArmPickup : MonoBehaviour
             isCompartimento = true;
             compartimento = other.gameObject;
         }
+        Debug.Log("Entraste no trigger do pickup");
+        playerInZone = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -71,6 +73,8 @@ public class ArmPickup : MonoBehaviour
         {
             objectsInReach.Remove(other.gameObject);
         }
+        Debug.Log("Saiste do trigger do pickup");
+        playerInZone = false;
     }
 
     void PickUp(GameObject obj)
@@ -262,7 +266,6 @@ public class ArmPickup : MonoBehaviour
 
             heldObject = null;
         }
-
     }
 
     public CompartimentoState getCompartimentoState(Transform compartimento)
