@@ -69,7 +69,6 @@ public class ArmPickup : MonoBehaviour
                 if (colliders[i].name.StartsWith("DoorPlantCollider"))
                     compartimento = colliders[i].transform;
             }
-            print(compartimento.name);
             compartimentoState = getCompartimentoState(compartimento);
             if(compartimentoState != null)
             {
@@ -83,6 +82,7 @@ public class ArmPickup : MonoBehaviour
                     heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.07f);
                     heldObject.GetComponent<Rigidbody>().isKinematic = true;
                     heldObject.GetComponent<Collider>().enabled = false;
+                    heldObject.GetComponent<PlantState>().isBeingHeld = true;
                 }
             }
             else
@@ -95,6 +95,7 @@ public class ArmPickup : MonoBehaviour
                 heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.07f);
                 heldObject.GetComponent<Rigidbody>().isKinematic = true;
                 heldObject.GetComponent<Collider>().enabled = false;
+                heldObject.GetComponent<PlantState>().isBeingHeld = true;
             }
         }
         else
@@ -107,6 +108,7 @@ public class ArmPickup : MonoBehaviour
             heldObject.transform.localPosition = new Vector3(0.4f, -0.3f, -0.07f);
             heldObject.GetComponent<Rigidbody>().isKinematic = true;
             heldObject.GetComponent<Collider>().enabled = false;
+            heldObject.GetComponent<PlantState>().isBeingHeld = true;
         }
     }
 
@@ -115,6 +117,7 @@ public class ArmPickup : MonoBehaviour
         Vector3 dropPos = transform.position + transform.forward * 0.5f;
 
         Collider[] colliders = Physics.OverlapSphere(dropPos, detectionRadius, compartimentoLayer);
+
 
         if (colliders.Length > 0)
         {
@@ -153,12 +156,13 @@ public class ArmPickup : MonoBehaviour
 
                     Rigidbody rb = heldObject.GetComponent<Rigidbody>();
                     rb.isKinematic = true;
-                    heldObject.GetComponent<Collider>().enabled = false;
 
                     Debug.Log("Planta largada dentro de compartimento");
 
-                    heldObject = null;
+                    heldObject.GetComponent<Collider>().enabled = false;
 
+                    heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                    heldObject = null;
                 }
             }
             else
@@ -179,6 +183,8 @@ public class ArmPickup : MonoBehaviour
                 rb.isKinematic = true;
                 heldObject.GetComponent<Collider>().enabled = false;
 
+                heldObject.GetComponent<PlantState>().isBeingHeld = false;
+
                 Debug.Log("Planta largada dentro de compartimento");
 
                 heldObject = null;
@@ -192,6 +198,8 @@ public class ArmPickup : MonoBehaviour
             rb.isKinematic = false;
             heldObject.GetComponent<Collider>().enabled = true;
 
+            heldObject.GetComponent<PlantState>().isBeingHeld = false;
+
             rb.AddForce(transform.forward * 0.01f, ForceMode.Impulse);
             heldObject.transform.localScale = new Vector3(5, 5, 5);
             heldObject.transform.localRotation = Quaternion.identity;
@@ -200,6 +208,7 @@ public class ArmPickup : MonoBehaviour
 
             heldObject = null;
         }
+        
     }
 
     public CompartimentoState getCompartimentoState(Transform compartimento)
