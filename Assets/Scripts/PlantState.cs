@@ -5,4 +5,5 @@ using UnityEngine;
 public class PlantState : MonoBehaviour
 {
     public bool isBeingHeld = false;
+    public bool isStored = false;
 }

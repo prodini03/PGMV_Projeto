@@ -99,8 +99,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 93.009476, y: 77.632835, z: 217.56856}
-  m_Center: {x: -47.32119, y: 2.172742, z: 2.2500594}
+  m_Size: {x: 36.1956, y: 77.632835, z: 253.5807}
+  m_Center: {x: -48.489384, y: 2.1727417, z: -2.1547117}
 --- !u!114 &5572487567946355891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,5 +113,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46b83baa2e05514c9ab9b291a8156a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickForce: 1.5
+  kickForce: 2
   plantTag: Pickup
