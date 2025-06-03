@@ -69,7 +69,6 @@ public class ArmPickup : MonoBehaviour
                 if (colliders[i].name.StartsWith("DoorPlantCollider"))
                     compartimento = colliders[i].transform;
             }
-            print(compartimento.name);
             compartimentoState = getCompartimentoState(compartimento);
             if(compartimentoState != null)
             {
@@ -108,6 +107,7 @@ public class ArmPickup : MonoBehaviour
             heldObject.GetComponent<Rigidbody>().isKinematic = true;
             heldObject.GetComponent<Collider>().enabled = false;
         }
+        obj.GetComponent<PlantState>().isBeingHeld = true;
     }
 
     void Drop()
@@ -115,6 +115,8 @@ public class ArmPickup : MonoBehaviour
         Vector3 dropPos = transform.position + transform.forward * 0.5f;
 
         Collider[] colliders = Physics.OverlapSphere(dropPos, detectionRadius, compartimentoLayer);
+
+        heldObject.GetComponent<PlantState>().isBeingHeld = false;
 
         if (colliders.Length > 0)
         {
@@ -200,6 +202,7 @@ public class ArmPickup : MonoBehaviour
 
             heldObject = null;
         }
+        
     }
 
     public CompartimentoState getCompartimentoState(Transform compartimento)
