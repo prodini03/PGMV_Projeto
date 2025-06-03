@@ -127,6 +127,14 @@ public class ArmarioGen : MonoBehaviour
         GameObject plantaGO = new GameObject("Planta_" + tipoPlanta);
         plantaGO.transform.parent = getTransformPos(ModuloName, ModuloPos, moduloGO);
         plantaGO.transform.localPosition = getVectorForPos(ModuloName, ModuloPos);
+        if(ModuloName == "G")
+        {
+            plantaGO.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
+        }
+        else
+        {
+            plantaGO.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+        }
 
         var lsys = plantaGO.AddComponent<LSystemController>();
 
@@ -155,6 +163,7 @@ public class ArmarioGen : MonoBehaviour
         //AjustarBoxCollider(plantaGO);
 
         plantaGO.AddComponent<PlantState>();
+        plantaGO.GetComponent<PlantState>().isStored = true;
 
         plantaGO.tag = "Pickup";
     }
@@ -223,11 +232,11 @@ public class ArmarioGen : MonoBehaviour
                 switch (ModuloPos)
                 {
                     case "Top":
-                        pos = modulo.transform.GetChild(1).GetChild(1);
+                        pos = modulo.transform.GetChild(0).GetChild(1);
                         break;
 
                     case "Bot":
-                        pos = modulo.transform.GetChild(0).GetChild(1);
+                        pos = modulo.transform.GetChild(1).GetChild(1);
                         break;
                 }
                 break;
@@ -236,11 +245,11 @@ public class ArmarioGen : MonoBehaviour
                 switch(ModuloPos)
                 {
                     case "Top":
-                        pos = modulo.transform.GetChild(0).GetChild(0);
+                        pos = modulo.transform.GetChild(1).GetChild(0);
                         break;
 
                     case "Bot":
-                        pos = modulo.transform.GetChild(1).GetChild(0);
+                        pos = modulo.transform.GetChild(0).GetChild(0);
                         break;
                     }
                     break;
