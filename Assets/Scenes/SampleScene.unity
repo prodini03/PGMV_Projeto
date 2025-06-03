@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedPlant: 1
-  iterations: 1
+  iterations: 3
   angle: 25.4
-  length: 0.5
+  length: 0.3
 --- !u!4 &148541594
 Transform:
   m_ObjectHideFlags: 0

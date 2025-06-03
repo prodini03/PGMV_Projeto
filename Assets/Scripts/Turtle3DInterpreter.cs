@@ -13,6 +13,13 @@ public class Turtle3DInterpreter : MonoBehaviour
 
     private Stack<TransformInfo> transformStack;
 
+    private class SymbolState
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+        public char symbol;
+    }
+
     public void Interpret(string sequence)
     {
         transformStack = new Stack<TransformInfo>();
@@ -20,8 +27,13 @@ public class Turtle3DInterpreter : MonoBehaviour
         turtle.position = transform.position;
         turtle.rotation = transform.rotation;
 
-        foreach (char c in sequence)
+        List<SymbolState> flowerMarkers = new();
+        List<Vector3> branchPositions = new();
+
+        for (int i = 0; i < sequence.Length; i++)
         {
+            char c = sequence[i];
+
             switch (c)
             {
                 case 'F':
@@ -29,6 +41,7 @@ public class Turtle3DInterpreter : MonoBehaviour
                     branch.transform.localScale = new Vector3(branchThickness, length / 2f, branchThickness);
                     branch.transform.Translate(Vector3.up * length / 2f);
                     turtle.Translate(Vector3.up * length);
+                    branchPositions.Add(branch.transform.position);
                     break;
                 case '+':
                     turtle.Rotate(Vector3.forward * angle);
@@ -56,18 +69,47 @@ public class Turtle3DInterpreter : MonoBehaviour
                     leaf.transform.Translate(Vector3.forward * length / 2.5f, Space.Self);
                     break;
                 case 'X':
-                    GameObject flower = Instantiate(flowerPrefab, turtle.position, turtle.rotation, this.transform);
-                    flower.transform.localScale = new Vector3(length * 250f, length * 250f, length * 250f);
-                    flower.transform.Rotate(Vector3.right, -90f, Space.Self);
-                    flower.transform.Translate(Vector3.forward * -0.03f, Space.Self); // Small fixed Z translation
-                    flower.transform.Translate(Vector3.forward * length / 2f, Space.Self);
+                    // Guarda posição e rotação do X para avaliação posterior
+                    flowerMarkers.Add(new SymbolState
+                    {
+                        position = turtle.position,
+                        rotation = turtle.rotation,
+                        symbol = 'X'
+                    });
                     break;
                 case '/':
                     turtle.Rotate(Vector3.up * angle);
                     break;
                 case '\\':
-                    turtle.Rotate(Vector3.up * -angle); 
+                    turtle.Rotate(Vector3.up * -angle);
                     break;
+            }
+        }
+
+        // Verifica quais X têm espaço livre acima (sem ramos por cima)
+        foreach (var marker in flowerMarkers)
+        {
+            bool blockedAbove = false;
+            foreach (var pos in branchPositions)
+            {
+                if (Mathf.Abs(pos.x - marker.position.x) < 0.05f &&
+                    Mathf.Abs(pos.z - marker.position.z) < 0.05f &&
+                    pos.y > marker.position.y &&
+                    Mathf.Abs(pos.y - marker.position.y) < length * 1.2f)
+                {
+                    blockedAbove = true;
+                    break;
+                }
+            }
+
+            if (!blockedAbove)
+            {
+                GameObject flower = Instantiate(flowerPrefab, marker.position, marker.rotation, this.transform);
+                flower.transform.localScale = new Vector3(length * 160f, length * 160f, length * 160f);
+                flower.transform.Rotate(Vector3.right, -90f, Space.Self);
+                flower.transform.Translate(Vector3.forward * -0.12f, Space.Self);
+                flower.transform.Translate(Vector3.up * 0.01f, Space.Self); 
+                flower.transform.Translate(Vector3.forward * length / 2f, Space.Self);
             }
         }
 
