@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class ArmarioGen : MonoBehaviour
@@ -68,6 +69,9 @@ public class ArmarioGen : MonoBehaviour
                 if (moduloCount != m) throw new System.Exception("Erro ao criar ficheiro xml, número de linhas diferente de m");
 
                 string tipo = moduloNode.Attributes["tipo"].Value;
+                string planta = moduloNode.Attributes["planta"]?.Value;
+               
+
                 GameObject moduloPrefab = tipo switch
                 {
                     "P" => prateleiraPrefab,
@@ -87,6 +91,13 @@ public class ArmarioGen : MonoBehaviour
                     else modulo.name = "Modulo_R_" + j + "_" + i;
                     modulo.transform.parent = armario.transform;
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
+
+                    if (planta == "s")
+                    {
+                        string tipoPlanta = moduloNode.Attributes["tipoPlanta"].Value;
+                        string moduloPos = moduloNode.Attributes["pos"].Value;
+                        CriarPlantaNoModulo(modulo, tipoPlanta, moduloPos, tipo);
+                    }
                 }
                 else
                 {
@@ -96,12 +107,201 @@ public class ArmarioGen : MonoBehaviour
                     modulo.transform.parent = armario.transform;
                     modulo.transform.position = new Vector3(xPos, yPos, zPos);
 
+                    if (planta == "s")
+                    {
+                        string tipoPlanta = moduloNode.Attributes["tipoPlanta"].Value;
+                        string moduloPos = moduloNode.Attributes["pos"].Value;
+                        CriarPlantaNoModulo(modulo, tipoPlanta, moduloPos, tipo);
+                    }
+
                 }
                 
-
             }
         }
         armario.transform.localRotation = Quaternion.AngleAxis(r, new Vector3(0, 1, 0));
         armario.transform.position = new Vector3(x,y,z);
+    }
+
+    void CriarPlantaNoModulo(GameObject moduloGO, string tipoPlanta, string ModuloPos, string ModuloName)
+    {
+        GameObject plantaGO = new GameObject("Planta_" + tipoPlanta);
+        plantaGO.transform.parent = getTransformPos(ModuloName, ModuloPos, moduloGO);
+        plantaGO.transform.localPosition = getVectorForPos(ModuloName, ModuloPos);
+
+        var lsys = plantaGO.AddComponent<LSystemController>();
+
+        switch (tipoPlanta)
+        {
+            case "bamboo":
+                lsys.selectedPlant = LSystemController.PlantType.Bamboo;
+                break;
+            case "flor":
+                lsys.selectedPlant = LSystemController.PlantType.FloweringBush;
+                break;
+            default:
+                Debug.LogWarning("Tipo de planta desconhecido: " + tipoPlanta);
+                Destroy(plantaGO);
+                return;
+        }
+
+        
+        Rigidbody rb = plantaGO.AddComponent<Rigidbody>();
+        rb.mass = 0.07f;
+        rb.drag = 0;
+        rb.angularDrag = 0.05f;
+        rb.useGravity = false; //ALTERAR ISTO PARA TRUE QUANDO ADICIONARMOS BOXCOLLIDER
+
+        //plantaGO.AddComponent<BoxCollider>();
+        //AjustarBoxCollider(plantaGO);
+
+        plantaGO.AddComponent<PlantState>();
+
+        plantaGO.tag = "Pickup";
+    }
+
+    public void AjustarBoxCollider(GameObject plantaGO)
+    {
+        StartCoroutine(FixColliderNextFrame(plantaGO));
+    }
+
+    private IEnumerator FixColliderNextFrame(GameObject plantaGO)
+    {
+        yield return null;
+
+        Renderer[] renderers = plantaGO.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0)
+        {
+            Debug.LogWarning("No renderers found in plant.");
+            yield break;
+        }
+
+        Bounds bounds = renderers[0].bounds;
+        foreach (Renderer r in renderers)
+        {
+            bounds.Encapsulate(r.bounds);
+        }
+
+        BoxCollider box = plantaGO.GetComponent<BoxCollider>();
+        if (box == null)
+            box = plantaGO.AddComponent<BoxCollider>();
+
+        Vector3 localCenter = plantaGO.transform.InverseTransformPoint(bounds.center);
+        Vector3 localSize = plantaGO.transform.InverseTransformVector(bounds.size);
+
+        box.center = localCenter;
+        box.size = localSize;
+    }
+
+
+    public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)
+    {
+        Transform pos = null;
+
+        switch (ModuloName)
+        {
+            case "C":
+                switch (ModuloPos)
+                {
+                    case "TopEsq":
+                         pos = modulo.transform.GetChild(0).GetChild(1);
+                        break;
+
+                    case "TopDir":
+                        pos = modulo.transform.GetChild(1).GetChild(1);
+                        break;
+
+                    case "BotEsq":
+                        pos = modulo.transform.GetChild(2).GetChild(1);
+                        break;
+
+                    case "BotDir":
+                        pos = modulo.transform.GetChild(3).GetChild(1);
+                        break;
+                }
+                break;
+            case "G":
+                switch (ModuloPos)
+                {
+                    case "Top":
+                        pos = modulo.transform.GetChild(1).GetChild(1);
+                        break;
+
+                    case "Bot":
+                        pos = modulo.transform.GetChild(0).GetChild(1);
+                        break;
+                }
+                break;
+
+            case "P":
+                switch(ModuloPos)
+                {
+                    case "Top":
+                        pos = modulo.transform.GetChild(0).GetChild(0);
+                        break;
+
+                    case "Bot":
+                        pos = modulo.transform.GetChild(1).GetChild(0);
+                        break;
+                    }
+                    break;
+        }
+
+        return pos;
+    }
+
+    public Vector3 getVectorForPos(string ModuloName, string ModuloPos)
+    {
+        Vector3 pos = Vector3.zero;
+
+        switch (ModuloName)
+        {
+            case "C":
+                switch (ModuloPos)
+                {
+                    case "TopEsq":
+                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        break;
+
+                    case "TopDir":
+                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        break;
+
+                    case "BotEsq":
+                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        break;
+
+                    case "BotDir":
+                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        break;
+                }
+                break;
+            case "G":
+                switch (ModuloPos)
+                {
+                    case "Top":
+                        pos = new Vector3(-0.11f, 0.15f, -1.06f);
+                        break;
+
+                    case "Bot":
+                        pos = new Vector3(-0.11f, 0.15f, -2.455f);
+                        break;
+                }
+                break;
+
+            case "P":
+                switch (ModuloPos)
+                {
+                    case "Top":
+                        pos = new Vector3(-0.42f, -0.265f, -0.23f);
+                        break;
+
+                    case "Bot":
+                        pos = new Vector3(-0.42f, -0.265f, -0.005f);
+                        break;
+                }
+                break;
+        }
+
+        return pos;
     }
 }
