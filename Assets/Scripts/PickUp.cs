@@ -177,12 +177,12 @@ public class ArmPickup : MonoBehaviour
                     heldObject.transform.localRotation = Quaternion.identity;
                     if (compartimento.name.EndsWith("GavetaBot"))
                     {
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 1));
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
                         heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -2.44f);
                     }
                     else if (compartimento.name.EndsWith("GavetaTop"))
                     {
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 1));
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
                         heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -0.662f);
                     }
 

@@ -268,19 +268,19 @@ public class ArmarioGen : MonoBehaviour
                 switch (ModuloPos)
                 {
                     case "TopEsq":
-                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        pos = new Vector3(1.1f, -0.46f, 0f);
                         break;
 
                     case "TopDir":
-                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        pos = new Vector3(1.1f, -0.46f, 0f);
                         break;
 
                     case "BotEsq":
-                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        pos = new Vector3(1.1f, -0.46f, 0f);
                         break;
 
                     case "BotDir":
-                        pos = new Vector3(0.91f, -0.46f, -0.033f);
+                        pos = new Vector3(1.1f, -0.46f, 0f);
                         break;
                 }
                 break;
@@ -301,11 +301,11 @@ public class ArmarioGen : MonoBehaviour
                 switch (ModuloPos)
                 {
                     case "Top":
-                        pos = new Vector3(-0.42f, -0.265f, -0.23f);
+                        pos = new Vector3(-0.2f, -0.265f, 0f);
                         break;
 
                     case "Bot":
-                        pos = new Vector3(-0.42f, -0.265f, -0.005f);
+                        pos = new Vector3(-0.2f, -0.265f, 0f);
                         break;
                 }
                 break;

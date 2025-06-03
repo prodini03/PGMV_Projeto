@@ -122,28 +122,49 @@ public class Turtle3DInterpreter : MonoBehaviour
             }
         }
 
-        // === Ajuste automático de escala se a planta for muito alta ===
-        float minY = float.MaxValue;
-        float maxY = float.MinValue;
+        float minY = float.MaxValue, maxY = float.MinValue;
+        float minX = float.MaxValue, maxX = float.MinValue;
+        float minZ = float.MaxValue, maxZ = float.MinValue;
 
         foreach (Transform child in transform)
         {
-            float y = child.position.y;
-            if (y < minY) minY = y;
-            if (y > maxY) maxY = y;
+            Vector3 pos = child.position;
+
+            if (pos.y < minY) minY = pos.y;
+            if (pos.y > maxY) maxY = pos.y;
+
+            if (pos.x < minX) minX = pos.x;
+            if (pos.x > maxX) maxX = pos.x;
+
+            if (pos.z < minZ) minZ = pos.z;
+            if (pos.z > maxZ) maxZ = pos.z;
         }
 
-        float alturaTotal = maxY - minY;
+        float altura = maxY - minY;
+        float largura = maxX - minX;
+        float profundidade = maxZ - minZ;
 
-        if (alturaTotal > alturaMax)
+        // === Define limites máximos desejados ===
+        float maxAltura = 1.5f;
+        float maxLargura = 1.5f;
+        float maxProfundidade = 1.5f;
+
+        // === Calcula fatores de escala por eixo ===
+        float scaleY = altura > maxAltura ? maxAltura / altura : 1f;
+        float scaleX = largura > maxLargura ? maxLargura / largura : 1f;
+        float scaleZ = profundidade > maxProfundidade ? maxProfundidade / profundidade : 1f;
+
+        // === Usa o menor fator para preservar proporções ===
+        float scale = Mathf.Min(scaleX, scaleY, scaleZ);
+
+        if (scale < 1f)
         {
-            float escala = alturaMax / alturaTotal;
-            transform.localScale *= escala;
-            Debug.Log($"Ajustando escala da planta");
+            transform.localScale *= scale;
+            Debug.Log("Planta foi escalada por: " + scale);
         }
 
         // === Limpa a tartaruga temporária ===
-        
+
         Destroy(turtle.gameObject);
     }
 
