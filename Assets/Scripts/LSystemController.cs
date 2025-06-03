@@ -49,8 +49,8 @@ public class LSystemController : MonoBehaviour
             generator.rules.Add(new LSystemRule
             {
                 predecessor = "F",
-                successors = new List<string> { "F[+F[L]]F[-F[X]]", "F[+F]F", "F[-F]F" },
-                probabilities = new List<float> { 0.5f, 0.25f, 0.25f }
+                successors = new List<string> { "F[+F[L]]F[-F[X]]", "FFX", "F[-F]F" },
+                probabilities = new List<float> { 0f, 1f, 0f }
             });
         }
 

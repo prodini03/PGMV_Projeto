@@ -55,7 +55,11 @@ public class Turtle3DInterpreter : MonoBehaviour
                     leaf.transform.Translate(Vector3.forward * length / 2.5f, Space.Self);
                     break;
                 case 'X':
-                    Instantiate(flowerPrefab, turtle.position, turtle.rotation, this.transform);
+                    GameObject flower = Instantiate(flowerPrefab, turtle.position, turtle.rotation, this.transform);
+                    flower.transform.localEulerAngles = new Vector3(-117.515f, 0.3999939f, -90.315f);
+                    flower.transform.localScale = new Vector3(length * 1f, 1f, 1f);
+                    
+                    
                     break;
                 case '/':
                     turtle.Rotate(Vector3.up * angle);
