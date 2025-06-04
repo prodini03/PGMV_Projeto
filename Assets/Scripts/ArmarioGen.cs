@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
@@ -125,6 +126,23 @@ public class ArmarioGen : MonoBehaviour
     void CriarPlantaNoModulo(GameObject moduloGO, string tipoPlanta, string ModuloPos, string ModuloName)
     {
         GameObject plantaGO = new GameObject("Planta_" + tipoPlanta);
+
+        Rigidbody rb = plantaGO.AddComponent<Rigidbody>();
+        rb.mass = 0.07f;
+        rb.drag = 0;
+        rb.angularDrag = 0.05f;
+        rb.useGravity = true; 
+        rb.isKinematic = true;
+
+        plantaGO.AddComponent<BoxCollider>();
+        FixBoxColliderToPlantSize(plantaGO);
+        plantaGO.GetComponent<Collider>().enabled = false;
+
+        plantaGO.AddComponent<PlantState>();
+        plantaGO.GetComponent<PlantState>().isStored = true;
+
+        plantaGO.tag = "Pickup";
+
         plantaGO.transform.parent = getTransformPos(ModuloName, ModuloPos, moduloGO);
         plantaGO.transform.localPosition = getVectorForPos(ModuloName, ModuloPos);
         if(ModuloName == "G")
@@ -151,55 +169,35 @@ public class ArmarioGen : MonoBehaviour
                 Destroy(plantaGO);
                 return;
         }
-
-        
-        Rigidbody rb = plantaGO.AddComponent<Rigidbody>();
-        rb.mass = 0.07f;
-        rb.drag = 0;
-        rb.angularDrag = 0.05f;
-        rb.useGravity = false; //ALTERAR ISTO PARA TRUE QUANDO ADICIONARMOS BOXCOLLIDER
-
-        //plantaGO.AddComponent<BoxCollider>();
-        //AjustarBoxCollider(plantaGO);
-
-        plantaGO.AddComponent<PlantState>();
-        plantaGO.GetComponent<PlantState>().isStored = true;
-
-        plantaGO.tag = "Pickup";
     }
-
-    public void AjustarBoxCollider(GameObject plantaGO)
+    public void FixBoxColliderToPlantSize(GameObject plantaGO)
     {
         StartCoroutine(FixColliderNextFrame(plantaGO));
     }
 
     private IEnumerator FixColliderNextFrame(GameObject plantaGO)
     {
+
         yield return null;
 
-        Renderer[] renderers = plantaGO.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0)
-        {
-            Debug.LogWarning("No renderers found in plant.");
-            yield break;
-        }
+        Vector3 worldCenter = plantaGO.GetComponent<Turtle3DInterpreter>().worldCenter;
+        Vector3 worldSize = plantaGO.GetComponent<Turtle3DInterpreter>().worldSize;
 
-        Bounds bounds = renderers[0].bounds;
-        foreach (Renderer r in renderers)
-        {
-            bounds.Encapsulate(r.bounds);
-        }
+        Vector3 localCenter = plantaGO.transform.InverseTransformPoint(worldCenter);
+        Vector3 localSize = plantaGO.transform.InverseTransformVector(worldSize);
 
         BoxCollider box = plantaGO.GetComponent<BoxCollider>();
-        if (box == null)
-            box = plantaGO.AddComponent<BoxCollider>();
+        
+        box.center = new Vector3(localCenter.x, localCenter.y, localCenter.z);
+        box.size = new Vector3(worldSize.x, worldSize.y, worldSize.z);
+        print(new Vector3(worldSize.x, worldSize.y, worldSize.z));
 
-        Vector3 localCenter = plantaGO.transform.InverseTransformPoint(bounds.center);
-        Vector3 localSize = plantaGO.transform.InverseTransformVector(bounds.size);
-
-        box.center = localCenter;
-        box.size = localSize;
+        Debug.Log("BoxCollider ajustado com sucesso.");
     }
+
+
+
+
 
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)

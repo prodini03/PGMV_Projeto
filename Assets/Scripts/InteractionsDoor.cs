@@ -38,7 +38,6 @@ public class DoorTriggerInteraction : MonoBehaviour
 
         if (doorsState == null)
             Debug.LogWarning("DoorsState não encontrado!");
-        print(componentName);
     }
 
     void Update()
@@ -177,7 +176,6 @@ public class DoorTriggerInteraction : MonoBehaviour
     private void markOpen()
     {
         GameObject obj = gameObject;
-        print(obj.name);
         
         if (obj.transform.parent.name.StartsWith("Cube"))
         {
@@ -193,7 +191,6 @@ public class DoorTriggerInteraction : MonoBehaviour
         {
             Transform cube = obj.transform.GetChild(0);
             CompartimentoState state = cube.GetComponent<CompartimentoState>();
-            print(cube.name);
             if (state != null)
             {
                 state.isOpen = true;

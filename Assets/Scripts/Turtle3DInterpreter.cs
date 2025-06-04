@@ -12,6 +12,9 @@ public class Turtle3DInterpreter : MonoBehaviour
     public float branchThickness = 0.1f;
     public float alturaMax = 1.55f; // Altura máxima permitida para a planta
 
+    public Vector3 worldCenter = Vector3.one;
+    public Vector3 worldSize = Vector3.one;
+
     private Stack<TransformInfo> transformStack;
 
     // Guarda posições e rotações dos 'X' encontrados (flor)
@@ -161,7 +164,15 @@ public class Turtle3DInterpreter : MonoBehaviour
         {
             transform.localScale *= scale;
             Debug.Log("Planta foi escalada por: " + scale);
+
+            //Define o centro e tamanho em world space para o collider das plantas
+            worldCenter = new Vector3((minX + maxX) / 2f * scale, (minY + maxY) / 2f * scale, (minZ + maxZ) / 2f * scale);
+            worldSize = new Vector3((maxX - minX) * scale, (maxY - minY) * scale, (maxZ - minZ) * scale);
         }
+
+        //Define o centro e tamanho em world space para o collider das plantas
+        worldCenter = new Vector3((minX + maxX) / 2f, (minY + maxY) / 2f, (minZ + maxZ) / 2f);
+        worldSize = new Vector3(maxX - minX, maxY - minY, maxZ - minZ);
 
         // === Limpa a tartaruga temporária ===
 

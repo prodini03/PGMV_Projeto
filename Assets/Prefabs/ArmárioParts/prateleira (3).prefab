@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 537639909522267691}
   - component: {fileID: 3220254376457380043}
   m_Layer: 8
-  m_Name: DoorPlantColliderGavetaTop
+  m_Name: DoorPlantColliderPrateleiraTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
