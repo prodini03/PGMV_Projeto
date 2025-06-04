@@ -37,6 +37,9 @@ public class RobotGen : MonoBehaviour
 
         leftShoulderInstance.name = "LeftShoulder";
         leftShoulderInstance.transform.localPosition = new Vector3(-0.33f, 0.75f, 0);
+        leftShoulderInstance.transform.GetChild(0).GetChild(0).tag = "Untagged";
+        leftShoulderInstance.transform.GetChild(0).GetChild(0).GetComponent<ArmPickup>().enabled = false;
+
 
         leftShoulder = leftShoulderInstance.transform;
 
@@ -55,9 +58,13 @@ public class RobotGen : MonoBehaviour
 
         rightElbow.name = "RightElbow";
         rightElbow.transform.localPosition = new Vector3(0f, -0.44f, 0);
+        rightElbow.transform.GetChild(0).GetChild(0).tag = "Untagged";
+        rightElbow.transform.GetChild(0).GetChild(0).GetComponent<ArmPickup>().enabled = false;
 
         rightShoulder.name = "RightShoulder";
         rightShoulder.transform.localPosition = new Vector3(0.33f, 0.75f, 0);
+        rightShoulder.transform.GetChild(0).GetChild(0).tag = "Untagged";
+        rightShoulder.transform.GetChild(0).GetChild(0).GetComponent<ArmPickup>().enabled = false;
 
         rightArm.transform.localPosition = new Vector3(1.875f, 2.1375f, 0);
 

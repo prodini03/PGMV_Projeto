@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7465180967566157843}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoBotDir
-  m_TagString: Untagged
+  m_TagString: Compartimento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 2369234891823963405}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoTopEsq
-  m_TagString: Untagged
+  m_TagString: Compartimento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 1594115595532895310}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoTopDir
-  m_TagString: Untagged
+  m_TagString: Compartimento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 4380448704276475830}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoBotEsq
-  m_TagString: Untagged
+  m_TagString: Compartimento
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

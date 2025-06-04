@@ -26,6 +26,7 @@ public class ArmPickup : MonoBehaviour
                 if (refreshCounter % 10 == 0)
                     RefreshNearbyPlants();   
                 GameObject target = GetClosestValidObject();
+                print(target.name);
                 if (target != null)
                 {
                     PickUp(target);
@@ -36,6 +37,7 @@ public class ArmPickup : MonoBehaviour
                 Drop();
             }
         }
+        print(objectsInReach.Count);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,7 +81,7 @@ public class ArmPickup : MonoBehaviour
     {
         if (other.CompareTag("Pickup"))
         {
-            objectsInReach.Remove(other.gameObject);
+            //objectsInReach.Remove(other.gameObject);
         }
         Debug.Log("Saiste do trigger do pickup");
         playerInZone = false;
@@ -328,7 +330,7 @@ public class ArmPickup : MonoBehaviour
 
     public void RefreshNearbyPlants()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f); // Adjust radius
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f); 
         foreach (var col in colliders)
         {
             if (col.CompareTag("Pickup"))
@@ -347,6 +349,18 @@ public class ArmPickup : MonoBehaviour
                     objectsInReach.Add(col.gameObject);
                     Debug.Log("Plant added via refresh: " + col.name);
                 }
+            }
+        }
+    }
+
+    public void ForceRegister(GameObject obj)
+    {
+        if (!objectsInReach.Contains(obj) && obj.CompareTag("Pickup"))
+        {
+            PlantState state = obj.GetComponent<PlantState>();
+            if (state != null && !state.isBeingHeld)
+            {
+                objectsInReach.Add(obj);
             }
         }
     }

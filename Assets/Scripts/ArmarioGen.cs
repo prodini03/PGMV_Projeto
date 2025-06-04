@@ -125,6 +125,8 @@ public class ArmarioGen : MonoBehaviour
 
     void CriarPlantaNoModulo(GameObject moduloGO, string tipoPlanta, string ModuloPos, string ModuloName)
     {
+        
+
         GameObject plantaGO = new GameObject("Planta_" + tipoPlanta);
 
         Rigidbody rb = plantaGO.AddComponent<Rigidbody>();
@@ -145,6 +147,7 @@ public class ArmarioGen : MonoBehaviour
 
         plantaGO.transform.parent = getTransformPos(ModuloName, ModuloPos, moduloGO);
         plantaGO.transform.localPosition = getVectorForPos(ModuloName, ModuloPos);
+
         if(ModuloName == "G")
         {
             plantaGO.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
@@ -169,6 +172,12 @@ public class ArmarioGen : MonoBehaviour
                 Destroy(plantaGO);
                 return;
         }
+
+        GameObject robot = GameObject.FindGameObjectWithTag("Player");
+        Transform leftElbow = robot.transform.GetChild(2).GetChild(0).GetChild(1).GetChild(0).GetChild(0);
+        ArmPickup pickup = leftElbow.GetComponent<ArmPickup>();
+        pickup?.ForceRegister(plantaGO);
+
     }
     public void FixBoxColliderToPlantSize(GameObject plantaGO)
     {
