@@ -14,6 +14,7 @@ public class ArmPickup : MonoBehaviour
 
     private bool isCompartimento = false;
     private bool playerInZone = false;
+    private int refreshCounter = 0;
 
     void Update()
     {
@@ -21,7 +22,10 @@ public class ArmPickup : MonoBehaviour
         {
             if (heldObject == null && objectsInReach.Count > 0 && playerInZone)
             {
-                GameObject target = GetFirstValidObject();
+                refreshCounter++;
+                if (refreshCounter % 10 == 0)
+                    RefreshNearbyPlants();   
+                GameObject target = GetClosestValidObject();
                 if (target != null)
                 {
                     PickUp(target);
@@ -60,11 +64,15 @@ public class ArmPickup : MonoBehaviour
         }
         else if (other.CompareTag("Compartimento"))
         {
+
             isCompartimento = true;
             compartimento = other.gameObject;
+
         }
         Debug.Log("Entraste no trigger do pickup");
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAA Plantas: " + objectsInReach.Count);
         playerInZone = true;
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -286,10 +294,15 @@ public class ArmPickup : MonoBehaviour
         return compartimentoStateAux;
     }
 
-    private GameObject GetFirstValidObject()
+    private GameObject GetClosestValidObject()
     {
+        GameObject closest = null;
+        float minDistance = Mathf.Infinity;
+
         foreach (GameObject obj in objectsInReach)
         {
+            if (obj == null) continue;
+
             PlantState state = obj.GetComponent<PlantState>();
             if (state != null && !state.isBeingHeld)
             {
@@ -297,17 +310,45 @@ public class ArmPickup : MonoBehaviour
                 {
                     Transform compartimentoTransform = obj.transform.parent;
                     CompartimentoState cState = getCompartimentoState(compartimentoTransform);
-
                     if (cState != null && !cState.isOpen)
-                    {
                         continue;
-                    }
                 }
 
-                return obj;
+                float dist = Vector3.Distance(transform.position, obj.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    closest = obj;
+                }
             }
         }
 
-        return null;
+        return closest;
     }
+
+    public void RefreshNearbyPlants()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f); // Adjust radius
+        foreach (var col in colliders)
+        {
+            if (col.CompareTag("Pickup"))
+            {
+                PlantState state = col.GetComponent<PlantState>();
+                if (state != null && !objectsInReach.Contains(col.gameObject) && !state.isBeingHeld)
+                {
+                    if (state.isStored)
+                    {
+                        Transform compartimentoTransform = col.transform.parent;
+                        CompartimentoState cState = getCompartimentoState(compartimentoTransform);
+                        if (cState != null && !cState.isOpen)
+                            continue;
+                    }
+
+                    objectsInReach.Add(col.gameObject);
+                    Debug.Log("Plant added via refresh: " + col.name);
+                }
+            }
+        }
+    }
+
 }
