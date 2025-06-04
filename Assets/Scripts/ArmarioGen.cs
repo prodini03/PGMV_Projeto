@@ -126,7 +126,6 @@ public class ArmarioGen : MonoBehaviour
     void CriarPlantaNoModulo(GameObject moduloGO, string tipoPlanta, string ModuloPos, string ModuloName)
     {
         
-
         GameObject plantaGO = new GameObject("Planta_" + tipoPlanta);
 
         Rigidbody rb = plantaGO.AddComponent<Rigidbody>();
@@ -203,11 +202,6 @@ public class ArmarioGen : MonoBehaviour
 
         Debug.Log("BoxCollider ajustado com sucesso.");
     }
-
-
-
-
-
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)
     {
@@ -295,11 +289,11 @@ public class ArmarioGen : MonoBehaviour
                 switch (ModuloPos)
                 {
                     case "Top":
-                        pos = new Vector3(-0.11f, 0.15f, -1.06f);
+                        pos = new Vector3(-0.11f, 0.15f, -0.661f);
                         break;
 
                     case "Bot":
-                        pos = new Vector3(-0.11f, 0.15f, -2.455f);
+                        pos = new Vector3(-0.11f, 0.15f, -2.46f);
                         break;
                 }
                 break;

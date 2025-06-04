@@ -24,9 +24,8 @@ public class ArmPickup : MonoBehaviour
             {
                 refreshCounter++;
                 if (refreshCounter % 10 == 0)
-                    RefreshNearbyPlants();   
+                    RefreshNearbyPlants();
                 GameObject target = GetClosestValidObject();
-                print(target.name);
                 if (target != null)
                 {
                     PickUp(target);
@@ -37,7 +36,6 @@ public class ArmPickup : MonoBehaviour
                 Drop();
             }
         }
-        print(objectsInReach.Count);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,8 +69,6 @@ public class ArmPickup : MonoBehaviour
             compartimento = other.gameObject;
 
         }
-        Debug.Log("Entraste no trigger do pickup");
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAA Plantas: " + objectsInReach.Count);
         playerInZone = true;
 
     }
@@ -83,7 +79,6 @@ public class ArmPickup : MonoBehaviour
         {
             //objectsInReach.Remove(other.gameObject);
         }
-        Debug.Log("Saiste do trigger do pickup");
         playerInZone = false;
     }
 
@@ -132,16 +127,40 @@ public class ArmPickup : MonoBehaviour
             }
             else
             {
-                heldObject = obj;
-                heldObject.transform.SetParent(transform, true);
-                heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
-                heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
-                heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
-                heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
-                heldObject.GetComponent<Rigidbody>().isKinematic = true;
-                heldObject.GetComponent<Collider>().enabled = false;
-                heldObject.GetComponent<PlantState>().isBeingHeld = true;
-                heldObject.GetComponent<PlantState>().isStored = false;
+                GameObject modulo = getModuloFromCompartimento(compartimento);
+                DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
+                if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
+                {
+                    if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
+                    {
+                        heldObject = obj;
+                        heldObject.transform.SetParent(transform, true);
+                        heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
+                        heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
+                        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                        heldObject.GetComponent<Collider>().enabled = false;
+                        heldObject.GetComponent<PlantState>().isBeingHeld = true;
+                        heldObject.GetComponent<PlantState>().isStored = false;
+                    }
+                }
+                else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
+                {
+                    if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
+                    {
+                        heldObject = obj;
+                        heldObject.transform.SetParent(transform, true);
+                        heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
+                        heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
+                        heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
+                        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                        heldObject.GetComponent<Collider>().enabled = false;
+                        heldObject.GetComponent<PlantState>().isBeingHeld = true;
+                        heldObject.GetComponent<PlantState>().isStored = false;
+                    }
+                }
             }
         }
         else
@@ -171,11 +190,9 @@ public class ArmPickup : MonoBehaviour
             Transform compartimento = null;
             for (int i = 0; i < colliders.Length; i++)
             {
-                print(colliders[i].name);
                 if (colliders[i].name.StartsWith("DoorPlantCollider"))
                     compartimento = colliders[i].transform;
             }
-            print(compartimento.name);
             compartimentoState = getCompartimentoState(compartimento);
             if (compartimentoState != null)
             {
@@ -220,8 +237,6 @@ public class ArmPickup : MonoBehaviour
                     Rigidbody rb = heldObject.GetComponent<Rigidbody>();
                     rb.isKinematic = true;
 
-                    Debug.Log("Planta largada dentro de compartimento");
-
                     heldObject.GetComponent<Collider>().enabled = false;
 
                     heldObject.GetComponent<PlantState>().isBeingHeld = false;
@@ -231,30 +246,54 @@ public class ArmPickup : MonoBehaviour
             }
             else
             {
-                heldObject.transform.SetParent(compartimento);
-                heldObject.transform.localPosition = Vector3.zero;
-                heldObject.transform.localRotation = Quaternion.identity;
-
-                if (compartimento.name.EndsWith("PrateleiraBot"))
+                GameObject modulo = getModuloFromCompartimento(compartimento);
+                DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
+                if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
                 {
-                    heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
-                    heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                    if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
+                    {
+                        heldObject.transform.SetParent(compartimento);
+                        heldObject.transform.localPosition = Vector3.zero;
+                        heldObject.transform.localRotation = Quaternion.identity;
+
+                        if (compartimento.name.EndsWith("PrateleiraBot"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
+                        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                        rb.isKinematic = true;
+                        heldObject.GetComponent<Collider>().enabled = false;
+
+                        heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                        heldObject.GetComponent<PlantState>().isStored = true;
+
+                        heldObject = null;
+                    }
                 }
-                if (compartimento.name.EndsWith("PrateleiraTop"))
+                else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
                 {
-                    heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
-                    heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                    if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
+                    {
+                        heldObject.transform.SetParent(compartimento);
+                        heldObject.transform.localPosition = Vector3.zero;
+                        heldObject.transform.localRotation = Quaternion.identity;
+
+                        if (compartimento.name.EndsWith("PrateleiraTop"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
+                        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                        rb.isKinematic = true;
+                        heldObject.GetComponent<Collider>().enabled = false;
+
+                        heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                        heldObject.GetComponent<PlantState>().isStored = true;
+
+                        heldObject = null;
+                    }
                 }
-                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                rb.isKinematic = true;
-                heldObject.GetComponent<Collider>().enabled = false;
-
-                heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                heldObject.GetComponent<PlantState>().isStored = true;
-
-                Debug.Log("Planta largada dentro de compartimento");
-
-                heldObject = null;
             }
         }
         else
@@ -271,8 +310,6 @@ public class ArmPickup : MonoBehaviour
             rb.AddForce(transform.forward * 0.01f, ForceMode.Impulse);
             heldObject.transform.localScale = new Vector3(1f, 1f, 1f);
             heldObject.transform.localRotation = Quaternion.identity;
-
-            Debug.Log("Planta largada fora do compartimento");
 
             heldObject = null;
         }
@@ -330,7 +367,7 @@ public class ArmPickup : MonoBehaviour
 
     public void RefreshNearbyPlants()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f); 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f);
         foreach (var col in colliders)
         {
             if (col.CompareTag("Pickup"))
@@ -347,7 +384,6 @@ public class ArmPickup : MonoBehaviour
                     }
 
                     objectsInReach.Add(col.gameObject);
-                    Debug.Log("Plant added via refresh: " + col.name);
                 }
             }
         }
@@ -363,6 +399,19 @@ public class ArmPickup : MonoBehaviour
                 objectsInReach.Add(obj);
             }
         }
+    }
+
+    public GameObject getModuloFromCompartimento(Transform compartimento)
+    {
+        GameObject modulo = compartimento.gameObject;
+
+
+        while (!modulo.name.StartsWith("Modulo"))
+        {
+            modulo = modulo.transform.parent?.gameObject;
+        }
+
+        return modulo;
     }
 
 }
