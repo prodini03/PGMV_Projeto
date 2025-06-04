@@ -252,46 +252,50 @@ public class ArmPickup : MonoBehaviour
                 {
                     if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
                     {
-                        heldObject.transform.SetParent(compartimento);
-                        heldObject.transform.localPosition = Vector3.zero;
-                        heldObject.transform.localRotation = Quaternion.identity;
-
+                        
                         if (compartimento.name.EndsWith("PrateleiraBot"))
                         {
+                            heldObject.transform.SetParent(compartimento);
+                            heldObject.transform.localPosition = Vector3.zero;
+                            heldObject.transform.localRotation = Quaternion.identity;
+
                             heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
                             heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                            rb.isKinematic = true;
+                            heldObject.GetComponent<Collider>().enabled = false;
+
+                            heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                            heldObject.GetComponent<PlantState>().isStored = true;
+
+                            heldObject = null;
                         }
-                        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                        rb.isKinematic = true;
-                        heldObject.GetComponent<Collider>().enabled = false;
-
-                        heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                        heldObject.GetComponent<PlantState>().isStored = true;
-
-                        heldObject = null;
                     }
                 }
                 else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
                 {
                     if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
                     {
-                        heldObject.transform.SetParent(compartimento);
-                        heldObject.transform.localPosition = Vector3.zero;
-                        heldObject.transform.localRotation = Quaternion.identity;
-
+                       
                         if (compartimento.name.EndsWith("PrateleiraTop"))
                         {
+                            heldObject.transform.SetParent(compartimento);
+                            heldObject.transform.localPosition = Vector3.zero;
+                            heldObject.transform.localRotation = Quaternion.identity;
+
                             heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
                             heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                            rb.isKinematic = true;
+                            heldObject.GetComponent<Collider>().enabled = false;
+
+                            heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                            heldObject.GetComponent<PlantState>().isStored = true;
+
+                            heldObject = null;
                         }
-                        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                        rb.isKinematic = true;
-                        heldObject.GetComponent<Collider>().enabled = false;
-
-                        heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                        heldObject.GetComponent<PlantState>().isStored = true;
-
-                        heldObject = null;
                     }
                 }
             }
@@ -308,7 +312,6 @@ public class ArmPickup : MonoBehaviour
             heldObject.GetComponent<PlantState>().isStored = false;
 
             rb.AddForce(transform.forward * 0.01f, ForceMode.Impulse);
-            heldObject.transform.localScale = new Vector3(1f, 1f, 1f);
             heldObject.transform.localRotation = Quaternion.identity;
 
             heldObject = null;
