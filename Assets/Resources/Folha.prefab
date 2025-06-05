@@ -66,10 +66,34 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 87dcfb2948e219741bb584eb9e381c6d, type: 2}
     - target: {fileID: 919132149155446097, guid: 74b83dc2f7256c441b055628d5411ec5, type: 3}
       propertyPath: m_Name
-      value: Folha2
+      value: Folha
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 74b83dc2f7256c441b055628d5411ec5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5507947988152505217}
   m_SourcePrefab: {fileID: 100100000, guid: 74b83dc2f7256c441b055628d5411ec5, type: 3}
+--- !u!1 &6498331771128814284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 74b83dc2f7256c441b055628d5411ec5, type: 3}
+  m_PrefabInstance: {fileID: 6264471352221738909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5507947988152505217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498331771128814284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd68c79f42536b488e91f6b566a50a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windStrength: 6
+  windSpeed: 3
+  rotationAxis: {x: 0, y: 0, z: 1}
+  windEnabled: 1

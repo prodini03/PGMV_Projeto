@@ -22,9 +22,6 @@ public class ArmPickup : MonoBehaviour
         {
             if (heldObject == null && objectsInReach.Count > 0 && playerInZone)
             {
-                refreshCounter++;
-                if (refreshCounter % 10 == 0)
-                    RefreshNearbyPlants();
                 GameObject target = GetClosestValidObject();
                 if (target != null)
                 {
@@ -366,30 +363,6 @@ public class ArmPickup : MonoBehaviour
         }
 
         return closest;
-    }
-
-    public void RefreshNearbyPlants()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f);
-        foreach (var col in colliders)
-        {
-            if (col.CompareTag("Pickup"))
-            {
-                PlantState state = col.GetComponent<PlantState>();
-                if (state != null && !objectsInReach.Contains(col.gameObject) && !state.isBeingHeld)
-                {
-                    if (state.isStored)
-                    {
-                        Transform compartimentoTransform = col.transform.parent;
-                        CompartimentoState cState = getCompartimentoState(compartimentoTransform);
-                        if (cState != null && !cState.isOpen)
-                            continue;
-                    }
-
-                    objectsInReach.Add(col.gameObject);
-                }
-            }
-        }
     }
 
     public void ForceRegister(GameObject obj)
