@@ -5,4 +5,5 @@ using UnityEngine;
 public class CompartimentoState : MonoBehaviour
 {
     public bool isOpen = false;
+    
 }

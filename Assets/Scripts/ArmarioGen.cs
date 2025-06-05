@@ -147,7 +147,10 @@ public class ArmarioGen : MonoBehaviour
         plantaGO.transform.parent = getTransformPos(ModuloName, ModuloPos, moduloGO);
         plantaGO.transform.localPosition = getVectorForPos(ModuloName, ModuloPos);
 
-        if(ModuloName == "G")
+        getTransformPos(ModuloName, ModuloPos, moduloGO).transform.GetComponentInChildren<isOccupiedByPlant>().isOccupied = true;
+        
+
+        if (ModuloName == "G")
         {
             plantaGO.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
         }

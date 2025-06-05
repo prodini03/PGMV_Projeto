@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6500691271625481897}
   - component: {fileID: 7465180967566157843}
+  - component: {fileID: 8855691166125829125}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoBotDir
   m_TagString: Compartimento
@@ -223,6 +224,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6507765, y: 0.716251, z: 0.76105595}
   m_Center: {x: 0.3998035, y: -0.034580767, z: -0.029829979}
+--- !u!114 &8855691166125829125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505602313231571480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395029264208974854
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3342372958587997543}
   - component: {fileID: 2369234891823963405}
+  - component: {fileID: 1340188136261481372}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoTopEsq
   m_TagString: Compartimento
@@ -276,6 +290,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6507765, y: 0.716251, z: 0.76105595}
   m_Center: {x: 0.3998035, y: -0.034580767, z: -0.029829979}
+--- !u!114 &1340188136261481372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395029264208974854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2373575841324553067
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!65 &3916244108756234400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -888,6 +915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7244237026997340090}
   - component: {fileID: 1594115595532895310}
+  - component: {fileID: 6071220555639593263}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoTopDir
   m_TagString: Compartimento
@@ -931,6 +959,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6507765, y: 0.716251, z: 0.76105595}
   m_Center: {x: 0.3998035, y: -0.034580767, z: -0.029829979}
+--- !u!114 &6071220555639593263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764555449881613280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4848825145914281725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!65 &4847358447008050597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1156,6 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970697262877734016}
   - component: {fileID: 4380448704276475830}
+  - component: {fileID: 8313510620860031155}
   m_Layer: 8
   m_Name: DoorPlantColliderCubiculoBotEsq
   m_TagString: Compartimento
@@ -1199,6 +1241,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6507765, y: 0.716251, z: 0.76105595}
   m_Center: {x: 0.3998035, y: -0.034580767, z: -0.029829979}
+--- !u!114 &8313510620860031155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5889878105461659788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7088678372624575119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!65 &4966337050961945106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1623,6 +1678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!65 &5086013185203901424
 BoxCollider:
   m_ObjectHideFlags: 0

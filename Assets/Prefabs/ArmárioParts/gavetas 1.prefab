@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6211212019858419264}
   - component: {fileID: 8225169254958935553}
+  - component: {fileID: 5413202854558695804}
   m_Layer: 8
   m_Name: DoorPlantColliderGavetaTop
   m_TagString: Compartimento
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8185719, y: 2.223596, z: 1.5935185}
   m_Center: {x: -0.1277795, y: -0.3198974, z: 0.16084594}
+--- !u!114 &5413202854558695804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778377907250525004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117154475932391673
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!1 &1942793594969228134
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isOccuppied: 0
 --- !u!1 &4426882479259663440
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184514704098969020}
   - component: {fileID: 1031676726253077624}
+  - component: {fileID: 3739109321967376900}
   m_Layer: 8
   m_Name: DoorPlantColliderGavetaBot
   m_TagString: Compartimento
@@ -651,3 +667,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8185719, y: 2.223596, z: 1.5935185}
   m_Center: {x: -0.1277795, y: -0.3198974, z: -1.69}
+--- !u!114 &3739109321967376900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147231279420419985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d411b2cd74df7d4aa822c9d8d0e5b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

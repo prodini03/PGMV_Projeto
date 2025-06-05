@@ -120,6 +120,7 @@ public class ArmPickup : MonoBehaviour
                     heldObject.GetComponent<Collider>().enabled = false;
                     heldObject.GetComponent<PlantState>().isBeingHeld = true;
                     heldObject.GetComponent<PlantState>().isStored = false;
+                    compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
                 }
             }
             else
@@ -140,6 +141,7 @@ public class ArmPickup : MonoBehaviour
                         heldObject.GetComponent<Collider>().enabled = false;
                         heldObject.GetComponent<PlantState>().isBeingHeld = true;
                         heldObject.GetComponent<PlantState>().isStored = false;
+                        compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
                     }
                 }
                 else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
@@ -156,6 +158,7 @@ public class ArmPickup : MonoBehaviour
                         heldObject.GetComponent<Collider>().enabled = false;
                         heldObject.GetComponent<PlantState>().isBeingHeld = true;
                         heldObject.GetComponent<PlantState>().isStored = false;
+                        compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
                     }
                 }
             }
@@ -191,107 +194,150 @@ public class ArmPickup : MonoBehaviour
                     compartimento = colliders[i].transform;
             }
             compartimentoState = getCompartimentoState(compartimento);
-            if (compartimentoState != null)
+            if (compartimento.GetComponent<isOccupiedByPlant>().isOccupied == false)
             {
-                if (compartimentoState.isOpen)
+                print(compartimento.GetComponent<isOccupiedByPlant>().isOccupied);
+                if (compartimentoState != null)
                 {
+                    if (compartimentoState.isOpen)
+                    {
 
-                    heldObject.transform.SetParent(compartimento);
-                    heldObject.transform.localPosition = Vector3.zero;
-                    heldObject.transform.localRotation = Quaternion.identity;
-                    if (compartimento.name.EndsWith("GavetaBot"))
-                    {
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
-                        heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -2.44f);
-                    }
-                    else if (compartimento.name.EndsWith("GavetaTop"))
-                    {
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
-                        heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -0.662f);
-                    }
-
-                    else if (compartimento.name.EndsWith("CubiculoTopDir"))
-                    {
-                        heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-                    }
-                    else if (compartimento.name.EndsWith("CubiculoTopEsq"))
-                    {
-                        heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-                    }
-                    else if (compartimento.name.EndsWith("CubiculoBotEsq"))
-                    {
-                        heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-                    }
-                    else if (compartimento.name.EndsWith("CubiculoBotDir"))
-                    {
-                        heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-                    }
-
-                    Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                    rb.isKinematic = true;
-
-                    heldObject.GetComponent<Collider>().enabled = false;
-
-                    heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                    heldObject.GetComponent<PlantState>().isStored = true;
-                    heldObject = null;
-                }
-            }
-            else
-            {
-                GameObject modulo = getModuloFromCompartimento(compartimento);
-                DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
-                if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
-                {
-                    if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
-                    {
-                        
-                        if (compartimento.name.EndsWith("PrateleiraBot"))
+                        heldObject.transform.SetParent(compartimento);
+                        compartimento.GetComponent<isOccupiedByPlant>().isOccupied = true;
+                        heldObject.transform.localPosition = Vector3.zero;
+                        heldObject.transform.localRotation = Quaternion.identity;
+                        if (compartimento.name.EndsWith("GavetaBot"))
                         {
-                            heldObject.transform.SetParent(compartimento);
-                            heldObject.transform.localPosition = Vector3.zero;
-                            heldObject.transform.localRotation = Quaternion.identity;
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
+                            heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -2.44f);
+                        }
+                        else if (compartimento.name.EndsWith("GavetaTop"))
+                        {
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(1, 0, 0));
+                            heldObject.transform.localPosition = new Vector3(-0.12f, 0.24f, -0.662f);
+                        }
 
-                            heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
+                        else if (compartimento.name.EndsWith("CubiculoTopDir"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
                             heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
+                        else if (compartimento.name.EndsWith("CubiculoTopEsq"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
+                        else if (compartimento.name.EndsWith("CubiculoBotEsq"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
+                        else if (compartimento.name.EndsWith("CubiculoBotDir"))
+                        {
+                            heldObject.transform.localPosition = new Vector3(1f, -0.5f, 0f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                        }
 
-                            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                            rb.isKinematic = true;
-                            heldObject.GetComponent<Collider>().enabled = false;
+                        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                        rb.isKinematic = true;
 
-                            heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                            heldObject.GetComponent<PlantState>().isStored = true;
+                        heldObject.GetComponent<Collider>().enabled = false;
 
-                            heldObject = null;
+                        heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                        heldObject.GetComponent<PlantState>().isStored = true;
+                        heldObject = null;
+                    }
+                }
+                else
+                {
+                    GameObject modulo = getModuloFromCompartimento(compartimento);
+                    DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
+                    if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
+                    {
+                        if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
+                        {
+                            if (compartimento.name.EndsWith("PrateleiraBot"))
+                            {
+                                heldObject.transform.SetParent(compartimento);
+                                heldObject.transform.localPosition = Vector3.zero;
+                                heldObject.transform.localRotation = Quaternion.identity;
+
+                                heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
+                                heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                                rb.isKinematic = true;
+                                heldObject.GetComponent<Collider>().enabled = false;
+
+                                heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                                heldObject.GetComponent<PlantState>().isStored = true;
+                                compartimento.GetComponent<isOccupiedByPlant>().isOccupied = true;
+                                heldObject = null;
+                            }
+                            if (compartimento.name.EndsWith("PrateleiraTop"))
+                            {
+                                heldObject.transform.SetParent(compartimento);
+                                heldObject.transform.localPosition = Vector3.zero;
+                                heldObject.transform.localRotation = Quaternion.identity;
+
+                                heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
+                                heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                                rb.isKinematic = true;
+                                heldObject.GetComponent<Collider>().enabled = false;
+
+                                heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                                heldObject.GetComponent<PlantState>().isStored = true;
+                                compartimento.GetComponent<isOccupiedByPlant>().isOccupied = true;
+                                heldObject = null;
+                            }
                         }
                     }
-                }
-                else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
-                {
-                    if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
+                    else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
                     {
-                       
-                        if (compartimento.name.EndsWith("PrateleiraTop"))
+                        if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
                         {
-                            heldObject.transform.SetParent(compartimento);
-                            heldObject.transform.localPosition = Vector3.zero;
-                            heldObject.transform.localRotation = Quaternion.identity;
 
-                            heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
-                            heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+                            print("CCCCCCCCCC");
+                            if (compartimento.name.EndsWith("PrateleiraBot"))
+                            {
+                                print("DDDDDDDDDD");
+                                heldObject.transform.SetParent(compartimento);
+                                heldObject.transform.localPosition = Vector3.zero;
+                                heldObject.transform.localRotation = Quaternion.identity;
 
-                            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-                            rb.isKinematic = true;
-                            heldObject.GetComponent<Collider>().enabled = false;
+                                heldObject.transform.localPosition = new Vector3(-0.35f, -0.265f, 0f);
+                                heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
 
-                            heldObject.GetComponent<PlantState>().isBeingHeld = false;
-                            heldObject.GetComponent<PlantState>().isStored = true;
+                                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                                rb.isKinematic = true;
+                                heldObject.GetComponent<Collider>().enabled = false;
 
-                            heldObject = null;
+                                heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                                heldObject.GetComponent<PlantState>().isStored = true;
+                                compartimento.GetComponent<isOccupiedByPlant>().isOccupied = true;
+                                heldObject = null;
+                            }
+
+                            if (compartimento.name.EndsWith("PrateleiraTop"))
+                            {
+                                heldObject.transform.SetParent(compartimento);
+                                heldObject.transform.localPosition = Vector3.zero;
+                                heldObject.transform.localRotation = Quaternion.identity;
+
+                                heldObject.transform.localPosition = new Vector3(-0.35f, -0.273f, 0f);
+                                heldObject.transform.localRotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                                Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+                                rb.isKinematic = true;
+                                heldObject.GetComponent<Collider>().enabled = false;
+
+                                heldObject.GetComponent<PlantState>().isBeingHeld = false;
+                                heldObject.GetComponent<PlantState>().isStored = true;
+                                compartimento.GetComponent<isOccupiedByPlant>().isOccupied = true;
+                                heldObject = null;
+                            }
                         }
                     }
                 }
