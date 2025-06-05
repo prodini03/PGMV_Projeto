@@ -14,6 +14,9 @@ public class LSystemController : MonoBehaviour
     public float angle = 25f;
     public float length = 0.3f;
 
+    public List<float> bambooProbabilities = new List<float> { 0.3f, 0.4f, 0.1f, 0.2f };
+    public List<float> bushProbabilities = new List<float> { 0.25f, 0.25f, 0.1f, 0.4f };
+
     void Start()
     {
         // 1. Instancia o vaso na base da planta
@@ -40,8 +43,8 @@ public class LSystemController : MonoBehaviour
             generator.rules.Add(new LSystemRule
             {
                 predecessor = "F",
-                successors = new List<string> { "F[+F\\\\\\L]FL", "//F[////L][-F]", "F[+F[\\\\\\L][L]][-F[//////L][L]]" },
-                probabilities = new List<float> { 0.3f, 0.4f, 0.1f, 0.2f }
+                successors = new List<string> { "F[+F\\\\\\L]FL", "//F[////L][-F]", "F[+F[\\\\\\L][L]][-F[//////L][L]]", "F" },
+                probabilities = bambooProbabilities
             });
         }
         else if (selectedPlant == PlantType.FloweringBush)  // Este ficava tipo um arbusto com flores
@@ -50,7 +53,7 @@ public class LSystemController : MonoBehaviour
             {
                 predecessor = "F",
                 successors = new List<string> { "F[^^L][-F\\\\\\X]", "F[^^L][+F///X]", "F[+F\\\\L][\\\\++F\\\\L][///--F//L][-F\\L]FX","F[^^L][\\+FX&L][/-FX&L]" },
-                probabilities = new List<float> { 0.25f, 0.25f, 0.1f , 0.4f }
+                probabilities = bushProbabilities
             });
         }
 

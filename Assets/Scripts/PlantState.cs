@@ -9,6 +9,7 @@ public class PlantState : MonoBehaviour
     public void SetStored(bool stored)
     {
         isStored = stored;
+
         // Enable/disable all WindControllers in children
         foreach (var wind in GetComponentsInChildren<WindController>())
         {
