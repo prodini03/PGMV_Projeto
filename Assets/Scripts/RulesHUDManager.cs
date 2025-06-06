@@ -97,14 +97,11 @@ public class RulesHUDManager : MonoBehaviour
             ? controller.bambooProbabilities
             : controller.bushProbabilities;
 
-        // Atualiza o valor
         probs[index] = value;
 
-        // Garante que a soma não passa de 1
         float total = probs.Sum();
         if (total > 1f)
         {
-            // Normaliza todos os valores para que a soma seja 1
             for (int i = 0; i < probs.Count; i++)
             {
                 probs[i] /= total;

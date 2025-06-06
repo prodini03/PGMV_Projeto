@@ -10,11 +10,9 @@ public class RobotSound : MonoBehaviour
 
     void Start()
     {
-        // Arm movement player
         armMovementPlayer = gameObject.AddComponent<AudioSource>();
         armMovementPlayer.playOnAwake = false;
 
-        // Hover sound player
         hoverPlayer = gameObject.AddComponent<AudioSource>();
         hoverPlayer.clip = hoverLoop;
         hoverPlayer.loop = true;

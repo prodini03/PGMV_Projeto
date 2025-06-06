@@ -11,17 +11,14 @@ public class RobotGen : MonoBehaviour
 
     void Awake()
     {
-        // Head
         GameObject head = Instantiate(headPrefab, transform);
         head.name = "Head";
         head.transform.localPosition = new Vector3(0, 4.725f, 0);
 
-        // Body
         GameObject body = Instantiate(bodyPrefab, transform);
         body.name = "Body";
         body.transform.localPosition = new Vector3(0, 0.375f, 0);
 
-        // Left Arm
         GameObject leftArm = new GameObject("LeftArm");
         GameObject leftShoulderInstance = Instantiate(jointPrefab);
         GameObject leftElbowInstance = Instantiate(jointPrefab);
@@ -46,8 +43,6 @@ public class RobotGen : MonoBehaviour
         leftArm.transform.localPosition = new Vector3(-1.875f, 2.1375f, 0);
 
 
-
-        // Right Arm
         GameObject rightArm = new GameObject("RightArm");
         GameObject rightShoulder = Instantiate(jointPrefab, rightArm.transform);
         GameObject rightElbow = Instantiate(jointPrefab, rightArm.transform);

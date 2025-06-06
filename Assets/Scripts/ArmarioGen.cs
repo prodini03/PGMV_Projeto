@@ -190,7 +190,6 @@ public class ArmarioGen : MonoBehaviour
         box.center = new Vector3(0f, 0.2040402f, 0f);
         box.size = new Vector3(0.5f, 0.33f, 0.54f);
 
-        Debug.Log("BoxCollider definido com tamanho e centro fixos.");
     }
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)

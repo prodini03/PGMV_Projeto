@@ -24,11 +24,10 @@ public class LSystemController : MonoBehaviour
 
     public void InitializePlant()
     {
-        // Limpa a planta
+        
         foreach (Transform child in transform)
             Destroy(child.gameObject);
 
-        // Instancia o vaso
         GameObject vasoPrefab = Resources.Load<GameObject>("Vaso");
         if (vasoPrefab != null)
         {
@@ -36,7 +35,6 @@ public class LSystemController : MonoBehaviour
             vaso.name = "Vaso(Clone)";
         }
 
-        // Apenas o caule (axioma)
         generator.axiom = "F";
         generator.iterations = 1;
         generator.isStochastic = true;
@@ -69,7 +67,6 @@ public class LSystemController : MonoBehaviour
         interpreter.length = length;
         interpreter.branchThickness = (selectedPlant == PlantType.FloweringBush) ? 0.05f : 0.1f;
 
-        // Só o caule, sem folhas nem flores
         interpreter.Interpret(sequence, includeFlowers: false);
 
         currentIteration = 0;
