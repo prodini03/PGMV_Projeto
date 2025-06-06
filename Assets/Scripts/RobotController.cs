@@ -33,7 +33,7 @@ public class RobotController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Head not found! Make sure it�s named 'Head' or tagged as 'Head'.");
+            Debug.LogWarning("Head not found! Make sure it's named 'Head' or tagged as 'Head'.");
         }
     }
 

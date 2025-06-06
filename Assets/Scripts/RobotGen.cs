@@ -48,7 +48,7 @@ public class RobotGen : MonoBehaviour
         GameObject rightElbow = Instantiate(jointPrefab, rightArm.transform);
 
         rightElbow.transform.parent = rightShoulder.transform;
-        rightShoulder.transform.parent = rightElbow.transform;
+        rightShoulder.transform.parent = rightArm.transform;
         rightArm.transform.parent = transform;
 
         rightElbow.name = "RightElbow";
