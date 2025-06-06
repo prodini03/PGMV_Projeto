@@ -15,11 +15,13 @@ public class LSystemController : MonoBehaviour
     private int currentIteration = 0;
     private LSystemGenerator generator;
     private Turtle3DInterpreter interpreter;
+    private Vector3 originalScale;
 
     void Awake()
     {
         generator = gameObject.AddComponent<LSystemGenerator>();
         interpreter = gameObject.AddComponent<Turtle3DInterpreter>();
+        originalScale = transform.localScale;
     }
 
     public void InitializePlant()
@@ -66,7 +68,7 @@ public class LSystemController : MonoBehaviour
         interpreter.angle = angle;
         interpreter.length = length;
         interpreter.branchThickness = (selectedPlant == PlantType.FloweringBush) ? 0.05f : 0.1f;
-
+        interpreter.ResetTurtle(originalScale);
         interpreter.Interpret(sequence, includeFlowers: false);
 
         currentIteration = 0;
@@ -116,7 +118,7 @@ public void FixBoxColliderToPlantSize()
         string sequence = generator.Generate();
 
         bool isFinal = currentIteration == iterations;
-
+        interpreter.ResetTurtle(originalScale);
         interpreter.Interpret(sequence, includeFlowers: isFinal);
         FixBoxColliderToPlantSize();
     }

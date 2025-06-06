@@ -117,40 +117,49 @@ public class Turtle3DInterpreter : MonoBehaviour
                 if (pos.z > maxZ) maxZ = pos.z;
             }
 
-        float altura = maxY - minY;
-        float largura = maxX - minX;
-        float profundidade = maxZ - minZ;
+            float altura = maxY - minY;
+            float largura = maxX - minX;
+            float profundidade = maxZ - minZ;
 
 
-        float maxAltura = 1.5f;
-        float maxLargura = 1.5f;
-        float maxProfundidade = 1.5f;
+            float maxAltura = 1.5f;
+            float maxLargura = 1.5f;
+            float maxProfundidade = 1.5f;
 
 
-        float scaleY = altura > maxAltura ? maxAltura / altura : 1f;
-        float scaleX = largura > maxLargura ? maxLargura / largura : 1f;
-        float scaleZ = profundidade > maxProfundidade ? maxProfundidade / profundidade : 1f;
+            float scaleY = altura > maxAltura ? maxAltura / altura : 1f;
+            float scaleX = largura > maxLargura ? maxLargura / largura : 1f;
+            float scaleZ = profundidade > maxProfundidade ? maxProfundidade / profundidade : 1f;
 
 
-        float scale = Mathf.Min(scaleX, scaleY, scaleZ);
+            float scale = Mathf.Min(scaleX, scaleY, scaleZ);
 
-        if (scale < 1f)
-        {
-            transform.localScale *= scale;
-            Debug.Log("Planta foi escalada por: " + scale);
-
-
-            worldCenter = new Vector3((minX + maxX) / 2f * scale, (minY + maxY) / 2f * scale, (minZ + maxZ) / 2f * scale);
-            worldSize = new Vector3((maxX - minX) * scale, (maxY - minY) * scale, (maxZ - minZ) * scale);
-        }
+            if (scale < 1f)
+            {
+                transform.localScale *= scale;
+                Debug.Log("Planta foi escalada por: " + scale);
 
 
-        worldCenter = new Vector3((minX + maxX) / 2f, (minY + maxY) / 2f, (minZ + maxZ) / 2f);
-        worldSize = new Vector3(maxX - minX, maxY - minY, maxZ - minZ);
+                worldCenter = new Vector3((minX + maxX) / 2f * scale, (minY + maxY) / 2f * scale, (minZ + maxZ) / 2f * scale);
+                worldSize = new Vector3((maxX - minX) * scale, (maxY - minY) * scale, (maxZ - minZ) * scale);
+            }
+
+
+            worldCenter = new Vector3((minX + maxX) / 2f, (minY + maxY) / 2f, (minZ + maxZ) / 2f);
+            worldSize = new Vector3(maxX - minX, maxY - minY, maxZ - minZ);
         }
 
         Destroy(turtle.gameObject);
     }
+
+public void ResetTurtle(Vector3 scale)
+{
+    transform.localRotation = Quaternion.identity;
+    transform.localScale = scale;
+
+    worldCenter = Vector3.zero;
+    worldSize = Vector3.one;
+}
 
     private struct TransformInfo
     {
