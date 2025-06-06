@@ -48,7 +48,6 @@ public class PlantManager : MonoBehaviour
         foreach (var plant in allPlants)
             plant.ResetPlant();
 
-        // Growth only resumes when Play is pressed again
     }
 
     IEnumerator GrowLoop()

@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca8eef66d66dc94e921c0043a7eda4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iterationInterval: 10
+  iterationInterval: 2
 --- !u!114 &2102539269 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1417498943796322596, guid: 8f98aa493ead3f244a2ae0609842c71e, type: 3}

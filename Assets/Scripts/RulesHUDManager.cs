@@ -14,7 +14,6 @@ public class RulesHUDManager : MonoBehaviour
     public TMP_Text probabilityTotalText; 
 
     private PlantState currentPlant;
-    private PlantState lastPlant;
 
     private readonly string[] bambooDescriptions = {
         "F[+F\\\\\\L]FL",
@@ -47,15 +46,9 @@ public class RulesHUDManager : MonoBehaviour
         bool holdingPlant = currentPlant != null && currentPlant.isBeingHeld;
         hudPanel.SetActive(holdingPlant);
 
-        if (holdingPlant && currentPlant != lastPlant)
+        if (holdingPlant)
         {
             LoadProbabilitiesAndDescriptions();
-            lastPlant = currentPlant;
-        }
-
-        if (!holdingPlant)
-        {
-            lastPlant = null;
         }
     }
 
@@ -97,14 +90,11 @@ public class RulesHUDManager : MonoBehaviour
             ? controller.bambooProbabilities
             : controller.bushProbabilities;
 
-        // Atualiza o valor
         probs[index] = value;
 
-        // Garante que a soma não passa de 1
         float total = probs.Sum();
         if (total > 1f)
         {
-            // Normaliza todos os valores para que a soma seja 1
             for (int i = 0; i < probs.Count; i++)
             {
                 probs[i] /= total;

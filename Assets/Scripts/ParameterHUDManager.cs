@@ -21,7 +21,6 @@ public class ParameterHUDManager : MonoBehaviour
 
     private PlantState currentPlant;
 
-    private PlantState lastPlant;
 
 
     void Start()
@@ -45,15 +44,9 @@ public class ParameterHUDManager : MonoBehaviour
         bool holdingPlant = currentPlant != null && currentPlant.isBeingHeld;
         hudPanel.SetActive(holdingPlant);
 
-        if (holdingPlant && currentPlant != lastPlant)
+        if (holdingPlant)
         {
             LoadPlantParameters();
-            lastPlant = currentPlant;
-        }
-
-        if (!holdingPlant)
-        {
-            lastPlant = null;
         }
     }
 
@@ -76,7 +69,6 @@ public class ParameterHUDManager : MonoBehaviour
         iterationsValueText.text = Mathf.RoundToInt(value).ToString();
         if (currentPlant != null)
             currentPlant.GetComponent<LSystemController>().iterations = Mathf.RoundToInt(value);
-        print(currentPlant.GetComponent<LSystemController>().iterations);
     }
 
     public void OnAngleSliderChanged(float value)
@@ -84,7 +76,6 @@ public class ParameterHUDManager : MonoBehaviour
         angleValueText.text = value.ToString("0.0");
         if (currentPlant != null)
             currentPlant.GetComponent<LSystemController>().angle = value;
-        print(currentPlant.GetComponent<LSystemController>().angle);
     }
 
     public void OnLengthSliderChanged(float value)
@@ -92,7 +83,6 @@ public class ParameterHUDManager : MonoBehaviour
         lengthValueText.text = value.ToString("0.00");
         if (currentPlant != null)
             currentPlant.GetComponent<LSystemController>().length = value;
-        print(currentPlant.GetComponent<LSystemController>().length);
     }
 
     void OnWindToggleChanged(bool isOn)
