@@ -8,15 +8,14 @@ public class RulesHUDManager : MonoBehaviour
 {
     public GameObject hudPanel;
 
-    public Slider[] ruleProbabilitySliders; // Arrasta os 4 sliders
-    public TMP_Text[] ruleValueTexts;       // Arrasta os 4 textos para o valor
-    public TMP_Text[] ruleDescriptionTexts; // Arrasta os 4 textos para a descrição da rule
-    public TMP_Text probabilityTotalText;   // Arrasta o texto para o total
+    public Slider[] ruleProbabilitySliders;
+    public TMP_Text[] ruleValueTexts;
+    public TMP_Text[] ruleDescriptionTexts; 
+    public TMP_Text probabilityTotalText; 
 
     private PlantState currentPlant;
     private PlantState lastPlant;
 
-    // Descrições das rules para cada tipo de planta
     private readonly string[] bambooDescriptions = {
         "F[+F\\\\\\L]FL",
         "//F[////L][-F]",

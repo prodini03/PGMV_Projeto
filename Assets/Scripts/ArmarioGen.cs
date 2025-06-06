@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
+
 public class ArmarioGen : MonoBehaviour
 {
     [SerializeField] GameObject armarioPrefab;
@@ -13,7 +14,7 @@ public class ArmarioGen : MonoBehaviour
     [SerializeField] GameObject prateleiraPrefab;
     [SerializeField] GameObject cubiculoPrefab;
     [SerializeField] string fileName;
-    
+
     void Start()
     {
         GerarArmario("Assets/Scripts/" + fileName);
@@ -136,7 +137,7 @@ public class ArmarioGen : MonoBehaviour
         rb.isKinematic = true;
 
         plantaGO.AddComponent<BoxCollider>();
-        FixBoxColliderToPlantSize(plantaGO);
+        FixBoxColliderStart(plantaGO);
         plantaGO.GetComponent<Collider>().enabled = false;
 
         plantaGO.AddComponent<PlantState>();
@@ -181,29 +182,14 @@ public class ArmarioGen : MonoBehaviour
         pickup?.ForceRegister(plantaGO);
 
     }
-    public void FixBoxColliderToPlantSize(GameObject plantaGO)
+    public void FixBoxColliderStart(GameObject plantaGO)
     {
-        StartCoroutine(FixColliderNextFrame(plantaGO));
-    }
-
-    private IEnumerator FixColliderNextFrame(GameObject plantaGO)
-    {
-
-        yield return null;
-
-        Vector3 worldCenter = plantaGO.GetComponent<Turtle3DInterpreter>().worldCenter;
-        Vector3 worldSize = plantaGO.GetComponent<Turtle3DInterpreter>().worldSize;
-
-        Vector3 localCenter = plantaGO.transform.InverseTransformPoint(worldCenter);
-        Vector3 localSize = plantaGO.transform.InverseTransformVector(worldSize);
-
         BoxCollider box = plantaGO.GetComponent<BoxCollider>();
-        
-        box.center = new Vector3(localCenter.x, localCenter.y, localCenter.z);
-        box.size = new Vector3(worldSize.x, worldSize.y, worldSize.z);
-        print(new Vector3(worldSize.x, worldSize.y, worldSize.z));
+        if (box == null)
+            box = plantaGO.AddComponent<BoxCollider>();
 
-        Debug.Log("BoxCollider ajustado com sucesso.");
+        box.center = new Vector3(0f, 0.2040402f, 0f);
+        box.size = new Vector3(0.5f, 0.33f, 0.54f);
     }
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)

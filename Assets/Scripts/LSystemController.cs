@@ -1,44 +1,48 @@
-// LSystemController.cs
-// Este script gera uma planta automaticamente, incluindo um vaso na base.
-// Ele carrega os prefabs de "Caule", "Folha", "Flor" e "Vaso" da pasta Resources e cria dois tipos diferentes de planta: Árvore ou Arbusto com Flores.
-
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LSystemController : MonoBehaviour
 {
-    public enum PlantType { Bamboo, FloweringBush } // Tipos de planta
-    public PlantType selectedPlant = PlantType.Bamboo; // Escolher no Inspector
-
-    public int iterations = 4; // Número de iterações
+    public enum PlantType { Bamboo, FloweringBush }
+    public PlantType selectedPlant = PlantType.Bamboo;
+    public int iterations = 4;
     public float angle = 25f;
     public float length = 0.3f;
 
     public List<float> bambooProbabilities = new List<float> { 0.3f, 0.4f, 0.1f, 0.2f };
     public List<float> bushProbabilities = new List<float> { 0.25f, 0.25f, 0.1f, 0.4f };
 
-    void Start()
+    private int currentIteration = 0;
+    private LSystemGenerator generator;
+    private Turtle3DInterpreter interpreter;
+
+    void Awake()
     {
-        // 1. Instancia o vaso na base da planta
+        generator = gameObject.AddComponent<LSystemGenerator>();
+        interpreter = gameObject.AddComponent<Turtle3DInterpreter>();
+    }
+
+    public void InitializePlant()
+    {
+        // Limpa a planta
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+
+        // Instancia o vaso
         GameObject vasoPrefab = Resources.Load<GameObject>("Vaso");
         if (vasoPrefab != null)
         {
-            Instantiate(vasoPrefab, transform.position, Quaternion.identity, this.transform);
-        }
-        else
-        {
-            Debug.LogWarning("Prefab 'Vaso' não encontrado na pasta Resources.");
+            GameObject vaso = Instantiate(vasoPrefab, transform.position, Quaternion.identity, transform);
+            vaso.name = "Vaso(Clone)";
         }
 
-        // 2. Cria e configura o gerador
-        LSystemGenerator generator = gameObject.AddComponent<LSystemGenerator>();
+        // Apenas o caule (axioma)
         generator.axiom = "F";
-        generator.iterations = iterations;
+        generator.iterations = 1;
         generator.isStochastic = true;
         generator.rules = new List<LSystemRule>();
 
-        // 3. Define regras diferentes conforme o tipo de planta
-        if (selectedPlant == PlantType.Bamboo) // Mudar para Bamboo
+        if (selectedPlant == PlantType.Bamboo)
         {
             generator.rules.Add(new LSystemRule
             {
@@ -47,32 +51,81 @@ public class LSystemController : MonoBehaviour
                 probabilities = bambooProbabilities
             });
         }
-        else if (selectedPlant == PlantType.FloweringBush)  // Este ficava tipo um arbusto com flores
+        else
         {
             generator.rules.Add(new LSystemRule
             {
                 predecessor = "F",
-                successors = new List<string> { "F[^^L][-F\\\\\\X]", "F[^^L][+F///X]", "F[+F\\\\L][\\\\++F\\\\L][///--F//L][-F\\L]FX","F[^^L][\\+FX&L][/-FX&L]" },
+                successors = new List<string> { "F[^^L][-F\\\\\\X]", "F[^^L][+F///X]", "F[+F\\\\L][\\\\++F\\\\L][///--F//L][-F\\L]FX", "F[^^L][\\+FX&L][/-FX&L]" },
                 probabilities = bushProbabilities
             });
         }
 
-        // 4. Gera a string final da planta
         string sequence = generator.Generate();
-
-        // 5. Cria e configura o interpretador
-        Turtle3DInterpreter interpreter = gameObject.AddComponent<Turtle3DInterpreter>();
         interpreter.branchPrefab = Resources.Load<GameObject>("Caule");
         interpreter.leafPrefab = Resources.Load<GameObject>("Folha");
         interpreter.flowerPrefab = Resources.Load<GameObject>("Flor");
         interpreter.angle = angle;
         interpreter.length = length;
-        if (selectedPlant == PlantType.FloweringBush)
-            interpreter.branchThickness = 0.05f; // Mais fino para o arbusto
-        else
-            interpreter.branchThickness = 0.1f;  // Valor normal para outros
+        interpreter.branchThickness = (selectedPlant == PlantType.FloweringBush) ? 0.05f : 0.1f;
 
-        // 6. Interpreta a sequência e instancia a planta
-        interpreter.Interpret(sequence);
+        // Só o caule, sem folhas nem flores
+        interpreter.Interpret(sequence, includeFlowers: false);
+
+        currentIteration = 0;
+    }
+
+public void FixBoxColliderToPlantSize()
+{
+    BoxCollider box = GetComponent<BoxCollider>();
+    if (box == null)
+        box = gameObject.AddComponent<BoxCollider>();
+
+    Renderer[] renderers = GetComponentsInChildren<Renderer>();
+    if (renderers.Length == 0)
+        return;
+
+    Bounds bounds = renderers[0].bounds;
+    foreach (Renderer rend in renderers)
+        bounds.Encapsulate(rend.bounds);
+
+    Vector3 localCenter = transform.InverseTransformPoint(bounds.center);
+    Vector3 localSize = transform.InverseTransformVector(bounds.size);
+
+    float minSizeXZ = 0.3f;
+
+    localSize.x = Mathf.Max(localSize.x, minSizeXZ);
+    localSize.z = Mathf.Max(localSize.z, minSizeXZ);
+
+    box.center = localCenter;
+    box.size = localSize;
+}
+
+
+
+    public void GrowNextIteration()
+    {
+        if (currentIteration >= iterations) return;
+
+        currentIteration++;
+
+        foreach (Transform child in transform)
+        {
+            if (child.name != "Vaso(Clone)")
+                Destroy(child.gameObject);
+        }
+
+        generator.iterations = currentIteration;
+        string sequence = generator.Generate();
+
+        bool isFinal = currentIteration == iterations;
+
+        interpreter.Interpret(sequence, includeFlowers: isFinal);
+        FixBoxColliderToPlantSize();
+    }
+
+    public void ResetPlant()
+    {
+        InitializePlant();
     }
 }

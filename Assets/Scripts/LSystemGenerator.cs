@@ -18,7 +18,7 @@ public class LSystemGenerator : MonoBehaviour
         return current;
     }
 
-    private string ApplyRules(string input)
+    public string ApplyRules(string input)
     {
         System.Text.StringBuilder sb = new();
         foreach (char c in input)

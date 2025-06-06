@@ -26,15 +26,15 @@ public class ParameterHUDManager : MonoBehaviour
 
     void Start()
     {
-        // Remove listeners antigos para evitar duplicados
         iterationsSlider.onValueChanged.RemoveAllListeners();
         angleSlider.onValueChanged.RemoveAllListeners();
         lengthSlider.onValueChanged.RemoveAllListeners();
+        windToggle.onValueChanged.RemoveAllListeners();
 
-        // Adiciona listeners por código
         iterationsSlider.onValueChanged.AddListener(OnIterationsSliderChanged);
         angleSlider.onValueChanged.AddListener(OnAngleSliderChanged);
         lengthSlider.onValueChanged.AddListener(OnLengthSliderChanged);
+        windToggle.onValueChanged.AddListener(OnWindToggleChanged);
     }
 
     void Update()
@@ -45,7 +45,6 @@ public class ParameterHUDManager : MonoBehaviour
         bool holdingPlant = currentPlant != null && currentPlant.isBeingHeld;
         hudPanel.SetActive(holdingPlant);
 
-        // Só atualiza sliders se for uma nova planta agarrada
         if (holdingPlant && currentPlant != lastPlant)
         {
             LoadPlantParameters();
@@ -93,6 +92,18 @@ public class ParameterHUDManager : MonoBehaviour
         lengthValueText.text = value.ToString("0.00");
         if (currentPlant != null)
             currentPlant.GetComponent<LSystemController>().length = value;
-            print(currentPlant.GetComponent<LSystemController>().length);
+        print(currentPlant.GetComponent<LSystemController>().length);
+    }
+
+    void OnWindToggleChanged(bool isOn)
+    {
+        if (currentPlant == null) return;
+
+        WindController[] windControllers = currentPlant.GetComponentsInChildren<WindController>();
+
+        foreach (var controller in windControllers)
+        {
+            controller.ToggleWind(isOn);
+        }
     }
 }

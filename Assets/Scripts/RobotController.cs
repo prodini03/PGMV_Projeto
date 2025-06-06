@@ -33,7 +33,7 @@ public class RobotController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Head not found! Make sure it’s named 'Head' or tagged as 'Head'.");
+            Debug.LogWarning("Head not found! Make sure itï¿½s named 'Head' or tagged as 'Head'.");
         }
     }
 
@@ -44,7 +44,7 @@ public class RobotController : MonoBehaviour
         Vector3 moveDirection = (transform.forward * moveForward + transform.right * moveRight).normalized;
         rb.AddForce(moveDirection * speed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             rb.AddForce(Vector3.up * verticalForce);
         }
