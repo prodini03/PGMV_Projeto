@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 
@@ -17,7 +16,7 @@ public class ArmarioGen : MonoBehaviour
 
     void Start()
     {
-        GerarArmario("Assets/Scripts/" + fileName);
+        GerarArmario(Application.streamingAssetsPath + "/" + fileName); ;
     }
 
     void GerarArmario(string path)
@@ -190,6 +189,8 @@ public class ArmarioGen : MonoBehaviour
 
         box.center = new Vector3(0f, 0.2040402f, 0f);
         box.size = new Vector3(0.5f, 0.33f, 0.54f);
+
+        Debug.Log("BoxCollider definido com tamanho e centro fixos.");
     }
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)

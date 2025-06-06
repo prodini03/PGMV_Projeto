@@ -2,11 +2,11 @@
 	<Coluna>
 		<Modulo tipo="P"/>
 		<Modulo tipo="G"/>
-		<Modulo tipo="P"/>
+		<Modulo tipo="P" planta="s" tipoPlanta="flor" pos="Bot"/>
 	</Coluna>
 	<Coluna>
 		<Modulo tipo="C"/>
-		<Modulo tipo="C"/>
+		<Modulo tipo="C" planta="s" tipoPlanta="bamboo" pos="BotDir"/>
 		<Modulo tipo="C"/>
 	</Coluna>
 </Armario>

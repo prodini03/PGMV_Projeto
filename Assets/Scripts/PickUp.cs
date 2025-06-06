@@ -106,30 +106,11 @@ public class ArmPickup : MonoBehaviour
                     compartimento = colliders[i].transform;
             }
             compartimentoState = getCompartimentoState(compartimento);
-            if (compartimentoState != null)
+            if (compartimento.GetComponent<isOccupiedByPlant>().isOccupied == true)
             {
-                if (compartimentoState.isOpen)
+                if (compartimentoState != null)
                 {
-                    heldObject = obj;
-                    heldObject.transform.SetParent(transform, true);
-                    heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
-                    heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
-                    heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
-                    heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
-                    heldObject.GetComponent<Rigidbody>().isKinematic = true;
-                    heldObject.GetComponent<Collider>().enabled = false;
-                    heldObject.GetComponent<PlantState>().isBeingHeld = true;
-                    heldObject.GetComponent<PlantState>().isStored = false;
-                    compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
-                }
-            }
-            else
-            {
-                GameObject modulo = getModuloFromCompartimento(compartimento);
-                DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
-                if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
-                {
-                    if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
+                    if (compartimentoState.isOpen)
                     {
                         heldObject = obj;
                         heldObject.transform.SetParent(transform, true);
@@ -144,21 +125,43 @@ public class ArmPickup : MonoBehaviour
                         compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
                     }
                 }
-                else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
+                else
                 {
-                    if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
+                    GameObject modulo = getModuloFromCompartimento(compartimento);
+                    DoorsState doorsState = modulo.transform.parent.gameObject.transform.parent.GetComponent<DoorsState>();
+                    if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_R"))
                     {
-                        heldObject = obj;
-                        heldObject.transform.SetParent(transform, true);
-                        heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
-                        heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
-                        heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
-                        heldObject.GetComponent<Rigidbody>().isKinematic = true;
-                        heldObject.GetComponent<Collider>().enabled = false;
-                        heldObject.GetComponent<PlantState>().isBeingHeld = true;
-                        heldObject.GetComponent<PlantState>().isStored = false;
-                        compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
+                        if (doorsState.rightDoorOpen == true && doorsState.leftDoorOpen == false)
+                        {
+                            heldObject = obj;
+                            heldObject.transform.SetParent(transform, true);
+                            heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
+                            heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
+                            heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                            heldObject.GetComponent<Collider>().enabled = false;
+                            heldObject.GetComponent<PlantState>().isBeingHeld = true;
+                            heldObject.GetComponent<PlantState>().isStored = false;
+                            compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
+                        }
+                    }
+                    else if (getModuloFromCompartimento(compartimento).name.StartsWith("Modulo_L"))
+                    {
+                        if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
+                        {
+                            heldObject = obj;
+                            heldObject.transform.SetParent(transform, true);
+                            heldObject.transform.localScale = new Vector3(0.468f, 0.27f, 0.27f);
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(0, new Vector3(1, 1, 1));
+                            heldObject.transform.localRotation = Quaternion.AngleAxis(80, new Vector3(1, 0, 0));
+                            heldObject.transform.localPosition = new Vector3(0.25f, -0.3f, -0.04f);
+                            heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                            heldObject.GetComponent<Collider>().enabled = false;
+                            heldObject.GetComponent<PlantState>().isBeingHeld = true;
+                            heldObject.GetComponent<PlantState>().isStored = false;
+                            compartimento.GetComponent<isOccupiedByPlant>().isOccupied = false;
+                        }
                     }
                 }
             }
@@ -298,11 +301,8 @@ public class ArmPickup : MonoBehaviour
                     {
                         if (doorsState.rightDoorOpen == false && doorsState.leftDoorOpen == true)
                         {
-
-                            print("CCCCCCCCCC");
                             if (compartimento.name.EndsWith("PrateleiraBot"))
                             {
-                                print("DDDDDDDDDD");
                                 heldObject.transform.SetParent(compartimento);
                                 heldObject.transform.localPosition = Vector3.zero;
                                 heldObject.transform.localRotation = Quaternion.identity;

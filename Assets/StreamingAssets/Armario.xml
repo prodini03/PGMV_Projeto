@@ -1,0 +1,22 @@
+<Armario n="4" m="3" x ="21,27" y="8" z="153,32" r="-45">
+	<Coluna>
+		<Modulo tipo="P" planta="n"/>
+		<Modulo tipo="G" planta="s" tipoPlanta="bamboo" pos="Bot"/>
+		<Modulo tipo="P" planta="n"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="C" planta="s" tipoPlanta="bamboo" pos="BotDir"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C"/>
+		<Modulo tipo="P" planta="s" tipoPlanta="flor" pos="Top"/>
+		<Modulo tipo="P" planta="s" tipoPlanta="bamboo" pos="Bot"/>
+	</Coluna>
+	<Coluna>
+		<Modulo tipo="C" planta="n"/>
+		<Modulo tipo="G"/>
+		<Modulo tipo="P" planta="s" tipoPlanta="flor" pos="Top"/>
+	</Coluna>
+</Armario>
