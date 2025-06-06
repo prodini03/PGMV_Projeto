@@ -85,38 +85,20 @@ public class ArmarioGen : MonoBehaviour
                 float yPos = startPointModuleY + 2 + (j * moduloAltura*2);
                 float zPos = startPointModuleZ - 2 - (i * moduloLargura*2);
 
-                if (tipo == "G")
-                {
-                    GameObject modulo = Instantiate(moduloPrefab);
-                    if(i == 0 || i < n/2) modulo.name = "Modulo_L_" + j + "_" + i;
-                    else modulo.name = "Modulo_R_" + j + "_" + i;
-                    modulo.transform.parent = armario.transform;
-                    modulo.transform.position = new Vector3(xPos, yPos, zPos);
-
-                    if (planta == "s")
-                    {
-                        string tipoPlanta = moduloNode.Attributes["tipoPlanta"].Value;
-                        string moduloPos = moduloNode.Attributes["pos"].Value;
-                        CriarPlantaNoModulo(modulo, tipoPlanta, moduloPos, tipo);
-                    }
-                }
-                else
-                {
-                    GameObject modulo = Instantiate(moduloPrefab);
-                    if (i == 0 || i < n / 2) modulo.name = "Modulo_L_" + j + "_" + i;
-                    else modulo.name = "Modulo_R_" + j + "_" + i;
-                    modulo.transform.parent = armario.transform;
-                    modulo.transform.position = new Vector3(xPos, yPos, zPos);
-
-                    if (planta == "s")
-                    {
-                        string tipoPlanta = moduloNode.Attributes["tipoPlanta"].Value;
-                        string moduloPos = moduloNode.Attributes["pos"].Value;
-                        CriarPlantaNoModulo(modulo, tipoPlanta, moduloPos, tipo);
-                    }
-
-                }
                 
+                GameObject modulo = Instantiate(moduloPrefab);
+                if (i == 0 || i < n / 2) modulo.name = "Modulo_L_" + j + "_" + i;
+                else modulo.name = "Modulo_R_" + j + "_" + i;
+                modulo.transform.parent = armario.transform;
+                modulo.transform.position = new Vector3(xPos, yPos, zPos);
+
+                if (planta == "s")
+                {
+                    string tipoPlanta = moduloNode.Attributes["tipoPlanta"].Value;
+                    string moduloPos = moduloNode.Attributes["pos"].Value;
+                    CriarPlantaNoModulo(modulo, tipoPlanta, moduloPos, tipo);
+                }
+
             }
         }
         armario.transform.localRotation = Quaternion.AngleAxis(r, new Vector3(0, 1, 0));
@@ -190,7 +172,6 @@ public class ArmarioGen : MonoBehaviour
         box.center = new Vector3(0f, 0.2040402f, 0f);
         box.size = new Vector3(0.5f, 0.33f, 0.54f);
 
-        Debug.Log("BoxCollider definido com tamanho e centro fixos.");
     }
 
     public Transform getTransformPos(string ModuloName, string ModuloPos, GameObject modulo)

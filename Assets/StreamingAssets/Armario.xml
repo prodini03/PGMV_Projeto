@@ -5,18 +5,18 @@
 		<Modulo tipo="P" planta="n"/>
 	</Coluna>
 	<Coluna>
-		<Modulo tipo="C"/>
-		<Modulo tipo="G"/>
+		<Modulo tipo="C" planta="n"/>
+		<Modulo tipo="G" planta="n"/>
 		<Modulo tipo="C" planta="s" tipoPlanta="bamboo" pos="BotDir"/>
 	</Coluna>
 	<Coluna>
-		<Modulo tipo="C"/>
+		<Modulo tipo="C" planta="n"/>
 		<Modulo tipo="P" planta="s" tipoPlanta="flor" pos="Top"/>
 		<Modulo tipo="P" planta="s" tipoPlanta="bamboo" pos="Bot"/>
 	</Coluna>
 	<Coluna>
 		<Modulo tipo="C" planta="n"/>
-		<Modulo tipo="G"/>
+		<Modulo tipo="G" planta="n"/>
 		<Modulo tipo="P" planta="s" tipoPlanta="flor" pos="Top"/>
 	</Coluna>
 </Armario>
